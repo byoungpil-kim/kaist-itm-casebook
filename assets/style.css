@@ -333,3 +333,45 @@ figcaption b { color: var(--gray-5); }
   margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12);
   font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 640px;
 }
+
+/* ===== v4: hero-v3, watermark, responsive grid, mobile filters, card images ===== */
+
+/* hero v3 — taller banner with SVG line-art */
+.hero.hero-v3 { position: relative; }
+.hero.hero-v3 .hero-art { position: absolute; right: 0; top: 0; height: 100%; width: 100%; pointer-events: none; }
+.hero.hero-v3 .wrap { position: relative; padding: 46px 24px 40px; }
+.hero.hero-v3 h1 { font-size: 31px; line-height: 1.3; }
+.hero.hero-v3 p.sub { margin-top: 10px; font-size: 15px; max-width: none; color: rgba(255,255,255,0.78); }
+.hero.hero-v3 .wip {
+  display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;
+  margin-top: 16px; padding: 8px 14px; border-radius: 6px;
+  background: rgba(255,183,77,0.12); border: 1px solid rgba(255,183,77,0.38);
+  color: #FFD9A0; font-size: 13px; line-height: 1.55;
+}
+.hero.hero-v3 .wip a { color: #FFE3B8; text-decoration: underline; text-underline-offset: 2px; }
+.hero.hero-v3 .wip a:hover { color: #fff; }
+
+/* site-wide work-in-progress watermark (subtle, non-interactive) */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 2147483000; pointer-events: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27460%27%20height%3D%27320%27%3E%3Ctext%20x%3D%27230%27%20y%3D%27160%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%2C%20sans-serif%27%20font-size%3D%2724%27%20font-weight%3D%27700%27%20letter-spacing%3D%274%27%20fill%3D%27%23445%27%20fill-opacity%3D%270.05%27%20transform%3D%27rotate(-24%20230%20160)%27%3EWORK%20IN%20PROGRESS%20%C2%B7%20DRAFT%3C%2Ftext%3E%3C%2Fsvg%3E");
+}
+
+/* responsive grid: scale columns with viewport */
+@media (min-width: 1500px) { :root { --maxw: 1420px; } }
+@media (min-width: 1900px) { :root { --maxw: 1680px; } }
+.grid { grid-template-columns: repeat(auto-fill, minmax(305px, 1fr)); }
+
+/* mobile dropdown filters */
+.mfilters { display: none; gap: 10px; margin-bottom: 16px; }
+.mfilters select {
+  flex: 1; min-width: 0; height: 44px; padding: 0 12px;
+  border: 1px solid var(--gray-3); border-radius: 6px; background: #fff;
+  font-family: inherit; font-size: 14px; color: var(--ink); outline: none;
+}
+.mfilters select:focus { border-color: var(--blue); }
+@media (max-width: 980px) {
+  .facets { display: none !important; }
+  .mfilters { display: flex; }
+  .mfilters-case { grid-row: 1; margin-bottom: 4px; }
+}

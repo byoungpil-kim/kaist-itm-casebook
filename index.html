@@ -21,10 +21,30 @@
     </nav>
   </div>
 </header>
-<section class="hero hero-sm">
+<section class="hero hero-v3">
+  <svg class="hero-art" viewBox="0 0 1200 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke="#7FB0FF">
+      <circle cx="1020" cy="118" r="52" stroke-opacity=".28" stroke-width="1.4"/>
+      <circle cx="1020" cy="118" r="92" stroke-opacity=".18" stroke-width="1.2" stroke-dasharray="3 7"/>
+      <circle cx="1020" cy="118" r="138" stroke-opacity=".12" stroke-width="1"/>
+      <circle cx="1020" cy="118" r="186" stroke-opacity=".07" stroke-width="1"/>
+      <path d="M 640 210 C 760 140 900 190 1010 120 S 1180 40 1240 70" stroke-opacity=".25" stroke-width="1.6"/>
+      <path d="M 600 230 C 740 180 880 230 1000 160 S 1190 90 1260 120" stroke-opacity=".15" stroke-width="1.3"/>
+      <path d="M 820 24 L 906 62 L 986 30 L 1088 74 L 1176 44" stroke-opacity=".3" stroke-width="1.4"/>
+    </g>
+    <g fill="#7FB0FF">
+      <circle cx="906" cy="62" r="4" fill-opacity=".7"/>
+      <circle cx="986" cy="30" r="3" fill-opacity=".5"/>
+      <circle cx="1088" cy="74" r="4.5" fill-opacity=".8"/>
+      <circle cx="820" cy="24" r="2.6" fill-opacity=".45"/>
+      <circle cx="1176" cy="44" r="3" fill-opacity=".5"/>
+      <circle cx="1020" cy="118" r="5.5" fill-opacity=".9"/>
+    </g>
+  </svg>
   <div class="wrap">
     <h1>기술과 경영의 접점에서 배우는 <span class="en">ITM Case Study</span> 라이브러리</h1>
     <p class="sub">KAIST 기술경영전문대학원(ITM) 석사과정의 기업 혁신 사례연구 가운데 우수사례를 선별해 소개합니다.</p>
+    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
 <section class="grid-area">
@@ -33,6 +53,16 @@
       <div class="facet"><div class="f-hd">기술경영 쟁점</div><ul><li><button class="on" data-g="issue" data-v="전체">전체 <span class="n">36</span></button></li><li><button data-g="issue" data-v="파괴적 혁신·신시장">파괴적 혁신·신시장 <span class="n">10</span></button></li><li><button data-g="issue" data-v="기술추격·흡수역량">기술추격·흡수역량 <span class="n">11</span></button></li><li><button data-g="issue" data-v="플랫폼·생태계">플랫폼·생태계 <span class="n">8</span></button></li><li><button data-g="issue" data-v="강소기업·딥테크 성장">강소기업·딥테크 성장 <span class="n">14</span></button></li><li><button data-g="issue" data-v="디지털 전환·공정혁신">디지털 전환·공정혁신 <span class="n">6</span></button></li><li><button data-g="issue" data-v="R&amp;D·특허 전략">R&amp;D·특허 전략 <span class="n">14</span></button></li><li><button data-g="issue" data-v="제품혁신·아키텍처">제품혁신·아키텍처 <span class="n">13</span></button></li><li><button data-g="issue" data-v="시장확산·캐즘 극복">시장확산·캐즘 극복 <span class="n">10</span></button></li><li><button data-g="issue" data-v="공공·기술사업화">공공·기술사업화 <span class="n">6</span></button></li></ul></div><div class="facet"><div class="f-hd">산업 분류</div><ul><li><button class="on" data-g="cat" data-v="전체">전체 <span class="n">36</span></button></li><li><button data-g="cat" data-v="IT·플랫폼">IT·플랫폼 <span class="n">6</span></button></li><li><button data-g="cat" data-v="제조·중공업">제조·중공업 <span class="n">4</span></button></li><li><button data-g="cat" data-v="기계·장비·부품">기계·장비·부품 <span class="n">7</span></button></li><li><button data-g="cat" data-v="항공·방산">항공·방산 <span class="n">4</span></button></li><li><button data-g="cat" data-v="바이오·헬스케어">바이오·헬스케어 <span class="n">5</span></button></li><li><button data-g="cat" data-v="배터리·소재">배터리·소재 <span class="n">3</span></button></li><li><button data-g="cat" data-v="소비재·유통">소비재·유통 <span class="n">6</span></button></li><li><button data-g="cat" data-v="공공·기술사업화">공공·기술사업화 <span class="n">1</span></button></li></ul></div><p class="facet-note">'기술경영 쟁점'과 '산업 분류'를 함께 선택하면 두 분류에 모두 해당하는 사례를 확인할 수 있습니다.</p>
     </aside>
     <div>
+      <div class="mfilters">
+        <select id="msel-issue" aria-label="기술경영 쟁점">
+          <option value="전체">기술경영 쟁점: 전체</option>
+          <option value="파괴적 혁신·신시장">파괴적 혁신·신시장</option><option value="기술추격·흡수역량">기술추격·흡수역량</option><option value="플랫폼·생태계">플랫폼·생태계</option><option value="강소기업·딥테크 성장">강소기업·딥테크 성장</option><option value="디지털 전환·공정혁신">디지털 전환·공정혁신</option><option value="R&amp;D·특허 전략">R&amp;D·특허 전략</option><option value="제품혁신·아키텍처">제품혁신·아키텍처</option><option value="시장확산·캐즘 극복">시장확산·캐즘 극복</option><option value="공공·기술사업화">공공·기술사업화</option>
+        </select>
+        <select id="msel-cat" aria-label="산업 분류">
+          <option value="전체">산업 분류: 전체</option>
+          <option value="IT·플랫폼">IT·플랫폼</option><option value="제조·중공업">제조·중공업</option><option value="기계·장비·부품">기계·장비·부품</option><option value="항공·방산">항공·방산</option><option value="바이오·헬스케어">바이오·헬스케어</option><option value="배터리·소재">배터리·소재</option><option value="소비재·유통">소비재·유통</option><option value="공공·기술사업화">공공·기술사업화</option>
+        </select>
+      </div>
       <div class="toolbar">
         <div style="display:flex;align-items:center;gap:22px;">
           <span class="count">총 <b id="cnt">36</b>건</span>
@@ -333,8 +363,17 @@ document.querySelectorAll('.facet button').forEach(b => b.addEventListener('clic
   document.querySelectorAll(`.facet button[data-g="${g}"]`).forEach(x => x.classList.remove('on'));
   b.classList.add('on');
   sel[g] = b.dataset.v;
+  syncSelects();
   apply();
 }));
+function syncSelects() {
+  const si = document.getElementById('msel-issue'), sc = document.getElementById('msel-cat');
+  if (si) si.value = sel.issue; if (sc) sc.value = sel.cat;
+}
+['issue','cat'].forEach(g => {
+  const el = document.getElementById('msel-' + g);
+  if (el) el.addEventListener('change', () => { sel[g] = el.value; setFacet(g, el.value); apply(); });
+});
 document.getElementById('q').addEventListener('input', apply);
 function apply() {
   const q = document.getElementById('q').value.trim().toLowerCase();
@@ -354,6 +393,7 @@ const usp = new URLSearchParams(location.search);
 if (usp.get('issue')) setFacet('issue', usp.get('issue'));
 if (usp.get('cat')) setFacet('cat', usp.get('cat'));
 if (usp.get('issue') || usp.get('cat')) apply();
+syncSelects();
 </script>
 </body>
 </html>

@@ -101,10 +101,30 @@ def build_index():
 </head>
 <body>
 {header()}
-<section class="hero hero-sm">
+<section class="hero hero-v3">
+  <svg class="hero-art" viewBox="0 0 1200 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g fill="none" stroke="#7FB0FF">
+      <circle cx="1020" cy="118" r="52" stroke-opacity=".28" stroke-width="1.4"/>
+      <circle cx="1020" cy="118" r="92" stroke-opacity=".18" stroke-width="1.2" stroke-dasharray="3 7"/>
+      <circle cx="1020" cy="118" r="138" stroke-opacity=".12" stroke-width="1"/>
+      <circle cx="1020" cy="118" r="186" stroke-opacity=".07" stroke-width="1"/>
+      <path d="M 640 210 C 760 140 900 190 1010 120 S 1180 40 1240 70" stroke-opacity=".25" stroke-width="1.6"/>
+      <path d="M 600 230 C 740 180 880 230 1000 160 S 1190 90 1260 120" stroke-opacity=".15" stroke-width="1.3"/>
+      <path d="M 820 24 L 906 62 L 986 30 L 1088 74 L 1176 44" stroke-opacity=".3" stroke-width="1.4"/>
+    </g>
+    <g fill="#7FB0FF">
+      <circle cx="906" cy="62" r="4" fill-opacity=".7"/>
+      <circle cx="986" cy="30" r="3" fill-opacity=".5"/>
+      <circle cx="1088" cy="74" r="4.5" fill-opacity=".8"/>
+      <circle cx="820" cy="24" r="2.6" fill-opacity=".45"/>
+      <circle cx="1176" cy="44" r="3" fill-opacity=".5"/>
+      <circle cx="1020" cy="118" r="5.5" fill-opacity=".9"/>
+    </g>
+  </svg>
   <div class="wrap">
     <h1>기술과 경영의 접점에서 배우는 <span class="en">ITM Case Study</span> 라이브러리</h1>
     <p class="sub">KAIST 기술경영전문대학원(ITM) 석사과정의 기업 혁신 사례연구 가운데 우수사례를 선별해 소개합니다.</p>
+    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
 <section class="grid-area">
@@ -113,6 +133,16 @@ def build_index():
       {facet_sidebar(interactive=True)}
     </aside>
     <div>
+      <div class="mfilters">
+        <select id="msel-issue" aria-label="기술경영 쟁점">
+          <option value="전체">기술경영 쟁점: 전체</option>
+          {''.join(f'<option value="{html.escape(i)}">{html.escape(i)}</option>' for i in ISSUES)}
+        </select>
+        <select id="msel-cat" aria-label="산업 분류">
+          <option value="전체">산업 분류: 전체</option>
+          {''.join(f'<option value="{html.escape(c)}">{html.escape(c)}</option>' for c in CATS)}
+        </select>
+      </div>
       <div class="toolbar">
         <div style="display:flex;align-items:center;gap:22px;">
           <span class="count">총 <b id="cnt">{n_total}</b>건</span>
@@ -145,8 +175,17 @@ document.querySelectorAll('.facet button').forEach(b => b.addEventListener('clic
   document.querySelectorAll(`.facet button[data-g="${{g}}"]`).forEach(x => x.classList.remove('on'));
   b.classList.add('on');
   sel[g] = b.dataset.v;
+  syncSelects();
   apply();
 }}));
+function syncSelects() {{
+  const si = document.getElementById('msel-issue'), sc = document.getElementById('msel-cat');
+  if (si) si.value = sel.issue; if (sc) sc.value = sel.cat;
+}}
+['issue','cat'].forEach(g => {{
+  const el = document.getElementById('msel-' + g);
+  if (el) el.addEventListener('change', () => {{ sel[g] = el.value; setFacet(g, el.value); apply(); }});
+}});
 document.getElementById('q').addEventListener('input', apply);
 function apply() {{
   const q = document.getElementById('q').value.trim().toLowerCase();
@@ -166,6 +205,7 @@ const usp = new URLSearchParams(location.search);
 if (usp.get('issue')) setFacet('issue', usp.get('issue'));
 if (usp.get('cat')) setFacet('cat', usp.get('cat'));
 if (usp.get('issue') || usp.get('cat')) apply();
+syncSelects();
 </script>
 </body>
 </html>'''
@@ -222,6 +262,16 @@ def build_case(cid):
   <aside class="facets">
     {facet_sidebar(rel='../', current_issue=m['issues'], current_cat=m['category'], interactive=False)}
   </aside>
+  <div class="mfilters mfilters-case">
+    <select aria-label="기술경영 쟁점으로 찾기" onchange="if(this.value)location.href='../index.html?issue='+encodeURIComponent(this.value)">
+      <option value="">기술경영 쟁점으로 찾기…</option>
+      {''.join(f'<option value="{html.escape(i)}">{html.escape(i)}</option>' for i in ISSUES)}
+    </select>
+    <select aria-label="산업 분류로 찾기" onchange="if(this.value)location.href='../index.html?cat='+encodeURIComponent(this.value)">
+      <option value="">산업 분류로 찾기…</option>
+      {''.join(f'<option value="{html.escape(c)}">{html.escape(c)}</option>' for c in CATS)}
+    </select>
+  </div>
   <div>
     <main class="art-body case-art">
 {body}
