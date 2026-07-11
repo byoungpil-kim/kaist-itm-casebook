@@ -304,7 +304,7 @@ def wrap_page(cid, body):
     </main>
     <div class="dlbar-inner"><div class="dlcard">
       <div><div class="t">요약으로 돌아가기</div><div class="s">{html.escape(m['title'])}</div></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../../cases/{cid}.html">← 요약 보기</a><a class="btn ghost" href="../../pdf/{cid}.pdf" download>PDF 내려받기 ⭳</a></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../../cases/{cid}.html">← 요약 보기</a><a class="btn ghost" href="../../pdf/{cid}.pdf" target="_blank" rel="noopener">PDF 내려받기 ⭳</a></div>
     </div></div>
   </div>
 </div>

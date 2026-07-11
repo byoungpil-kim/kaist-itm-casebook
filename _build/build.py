@@ -5,7 +5,7 @@ import json, os, html, glob, re
 # repo layout: this script lives in _build/, site root is the parent directory
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 W = ROOT
-meta = json.load(open(f'{W}/assets/meta.json'))
+meta = json.load(open(f'{W}/assets/meta.json', encoding='utf-8'))
 by_id = {m['id']: m for m in meta}
 ISSUES = ['파괴적 혁신·신시장', '기술추격·흡수역량', '플랫폼·생태계', '강소기업·딥테크 성장',
           '디지털 전환·공정혁신', 'R&D·특허 전략', '제품혁신·아키텍처', '시장확산·캐즘 극복', '공공·기술사업화']
@@ -209,7 +209,7 @@ syncSelects();
 </script>
 </body>
 </html>'''
-    open(f'{W}/index.html', 'w').write(page)
+    open(f'{W}/index.html', 'w', encoding='utf-8').write(page)
     print('index.html written,', len(cards), 'cards')
 
 def build_case(cid):
@@ -217,7 +217,7 @@ def build_case(cid):
     frag_path = f'{ROOT}/_build/cases_src/{cid}_body.html'
     if not os.path.exists(frag_path):
         return False
-    body = open(frag_path).read()
+    body = open(frag_path, encoding='utf-8').read()
     ids = [x['id'] for x in meta]  # newest first
     i = ids.index(cid)
     prv = by_id[ids[i+1]] if i+1 < len(ids) else None   # older
@@ -232,7 +232,7 @@ def build_case(cid):
     dl = f'''<div class="dlbar-inner"><div class="dlcard">
   <div><div class="t">사례연구 원문 보고서</div>
   <div class="s">{html.escape(m['title'])} — {html.escape(m['author'])} ({m['pub']})</div></div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../fulltext/{cid}/index.html" target="_blank" rel="noopener">원문 전체 보기 →</a></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../fulltext/{cid}/index.html" target="_blank" rel="noopener">원문 전체 보기 →</a><a class="btn ghost" href="../pdf/{cid}.pdf" target="_blank" rel="noopener">PDF 내려받기 ⭳</a></div>
 </div></div>'''
     page = f'''<!DOCTYPE html>
 <html lang="ko">
@@ -256,6 +256,7 @@ def build_case(cid):
       <span><span class="lbl">발표</span><b>{m['pub']}</b></span>
       {f'<span><span class="lbl">대상 기업</span><b>{html.escape(m["firm"])}</b></span>' if m['firm'] else ''}
     </div>
+    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
 <div class="wrap layout case-layout">
@@ -283,7 +284,7 @@ def build_case(cid):
 {footer()}
 </body>
 </html>'''
-    open(f'{W}/cases/{cid}.html', 'w').write(page)
+    open(f'{W}/cases/{cid}.html', 'w', encoding='utf-8').write(page)
     return True
 
 if __name__ == '__main__':
