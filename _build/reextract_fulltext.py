@@ -46,10 +46,49 @@ import fitz, io, re, html, os, sys
 from collections import Counter
 from PIL import Image, ImageStat
 
-# ---- 사례별 설정 (파일럿 완료: 260113, 260111) ----
+# ---- 사례별 설정 ----
+# body_start: 본문 첫 장(章) 페이지(0-base). refs_head: 참고문헌 대제목(공백 무시 매칭).
+# table_pages: 표영역 텍스트 제거 범위(초록·목차·부록·참고문헌 제외).
 CFG = {
     '260113': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 33))),
     '260111': dict(body_start=5, refs_head='참고문헌', table_pages=set(range(5, 43))),
+    '200104': dict(body_start=4, refs_head='참고문헌', table_pages=set(range(4, 29))),
+    '210203': dict(body_start=4, refs_head='참고자료', table_pages=set(range(4, 50))),
+    '210204': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 29))),
+    '220201': dict(body_start=4, refs_head='Reference', table_pages=set(range(4, 42))),
+    '220210': dict(body_start=4, refs_head='Reference', table_pages=set(range(4, 37))),
+    '230101': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 24))),
+    '230104': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 57))),
+    '230107': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 23))),
+    '230108': dict(body_start=4, refs_head='Reference', table_pages=set(range(4, 36))),
+    '230113': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 35))),
+    '230205': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 41))),
+    '230213': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 50))),
+    '230214': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 25))),
+    '230216': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 41))),
+    '230217': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 30))),
+    '240102': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 31))),
+    '240105': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 29))),
+    '240109': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 27))),
+    '240204': dict(body_start=7, refs_head='Reference', table_pages=set(range(7, 47))),
+    '240205': dict(body_start=6, refs_head='Reference', table_pages=set(range(6, 48))),
+    '240207': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 32))),
+    '240210': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 33))),
+    '250103': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 35))),
+    '250108': dict(body_start=2, refs_head='Reference', table_pages=set(range(2, 76))),
+    '250110': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 49))),
+    '250111': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 45))),
+    '250205': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 48))),
+    '250215': dict(body_start=5, refs_head='Reference', table_pages=set(range(5, 49))),
+    '260108': dict(body_start=6, refs_head='Reference', table_pages=set(range(6, 81))),
+    # 250210: 제1장 서론 헤딩이 size10 소자체라 서론이 p4에서 시작(제2장부터 size16).
+    '250210': dict(body_start=4, refs_head='Reference', table_pages=set(range(4, 37))),
+    # 230211: 본문·참고문헌 헤딩이 모두 size10 소자체 → body_size 지정 필요.
+    '230211': dict(body_start=4, refs_head='Reference', body_size=10, table_pages=set(range(4, 38))),
+    # 재추출 부적합(복잡 레이아웃·삽화 텍스트 다수로 PyMuPDF가 본문을 조각으로 읽어 문단 폭발) →
+    # 기존 gen_fulltext2 산출물 유지. CFG는 참고용(수동 실행해도 품질 미달):
+    #   '240209': dict(body_start=4, refs_head='Reference', table_pages=set(range(4, 62))),
+    #   '260105': dict(body_start=3, refs_head='Reference', table_pages=set(range(3, 37))),
     # 새 사례: dict(body_start=?, refs_head='참고문헌'|'Reference', table_pages=set(range(?, ?)))
 }
 
@@ -79,19 +118,29 @@ def build_body(CID, cfg):
         cy = (y0 + y1) / 2
         return any(r.y0 - 2 <= cy <= r.y1 + 2 for r in table_rects.get(pi, []))
 
-    # 문단 시작 판정용: 본문(size≈12) 줄들의 최빈 좌측 x(=이어짐 마진). 문단 시작은 더 들여씀.
+    bs = cfg.get('body_size', 12)          # 본문 폰트 크기(기본 12; 소자체 문서는 CFG로 지정)
+    BLO, BHI = bs - 1, bs + 1               # 본문 크기 하/상한
+
+    # 문단 시작 판정용: 본문 줄들의 최빈 좌측 x(=이어짐 마진). 문단 시작은 더 들여씀.
     xc = Counter()
     for pi in range(cfg['body_start'], d.page_count):
         for b in d[pi].get_text('dict')['blocks']:
             if b.get('type', 0) != 0:
                 continue
             for l in b.get('lines', []):
-                if 11 <= l['spans'][0]['size'] < 13 and ''.join(x['text'] for x in l['spans']).strip():
+                if BLO <= l['spans'][0]['size'] < BHI and ''.join(x['text'] for x in l['spans']).strip():
                     xc[round(l['bbox'][0])] += 1
     body_left = xc.most_common(1)[0][0] if xc else 77
+    ns = lambda s: re.sub(r'\s+', '', s)   # 공백 무시 비교(참  고  문  헌 등)
 
     def is_para_start(raw, x0):
         return raw[:1] == ' ' or x0 >= body_left + 6
+
+    # 직전 문단이 문장 종결로 끝났는지(페이지 넘김 지점의 오분할 방지).
+    _SENT_END = tuple('.?!’”」』）)') + ('다', '요', '함', '음', '임', '됨', '것', '라', '까')
+    def sentence_ended(buf):
+        t = ''.join(buf).rstrip()
+        return (not t) or t.endswith(_SENT_END)
 
     def spans_to_text(spans):
         out = []
@@ -109,12 +158,18 @@ def build_body(CID, cfg):
     def flush():
         if para:
             t = ''.join(para).strip()
-            if t:
+            # 숫자·절번호만 남은 문단(미주 마커·분리된 소제목 번호 등)은 버림
+            if t and not re.fullmatch(r'[\d\s.\-–)]+', t):
                 blocks.append(['p', t])
             para.clear()
 
+    stop = False
     for pi in range(cfg['body_start'], d.page_count):
+        if stop:
+            break
         for b in d[pi].get_text('dict')['blocks']:
+            if stop:
+                break
             if b.get('type', 0) != 0:
                 continue  # 이미지 블록은 문단을 끊지 않음(그림은 정렬로 배치)
             for l in b.get('lines', []):
@@ -122,6 +177,8 @@ def build_body(CID, cfg):
                 raw = ''.join(s['text'] for s in spans)
                 if not raw.strip():
                     continue
+                if '사례연구 모음집' in raw:
+                    stop = True; break   # 본문 뒤에 남은 학기 모음집 표지 → 이후 전부 무시
                 size = spans[0]['size']
                 bold = bool(spans[0]['flags'] & 16) or 'Bold' in spans[0]['font']
                 x0, y0, y1 = l['bbox'][0], l['bbox'][1], l['bbox'][3]
@@ -130,7 +187,7 @@ def build_body(CID, cfg):
                     continue  # 페이지 번호
                 if 'CASE STUDY' in raw and 'KAIST' in raw:
                     continue  # 러닝 헤더
-                if size < 11 and y0 > 665 and mode != 'ref':      # 페이지 하단 각주
+                if size < BLO and y0 > 665 and mode != 'ref':     # 페이지 하단 각주
                     m = re.match(r'\s*(\d+)\s+(.*)', raw)
                     if size <= 7 and m:
                         fn_cur = int(m.group(1)); footnotes[fn_cur] = m.group(2)
@@ -138,23 +195,49 @@ def build_body(CID, cfg):
                         footnotes[fn_cur] += raw
                     continue
                 fn_cur = None
-                if mode == 'body' and in_table(pi, y0, y1) and size < 13:
+                if mode == 'body' and in_table(pi, y0, y1) and size < BHI:
                     continue  # 표 영역 텍스트 제거
                 txt = spans_to_text(spans).rstrip()
                 if size >= 15:                                     # 대제목
+                    if mode == 'ref':
+                        continue   # 참고문헌 진입 후의 대형 텍스트(표지 잔여 등)는 본문 복귀 없이 무시
+                    is_ref = ns(cfg['refs_head']) in ns(txt)
+                    # 제목이 문자단위로 분리된 파일(240209·260105 등) 방어:
+                    #   장 번호(숫자)만 떨어져 나온 조각은 앞 h2에 흡수, 문장부호 조각은 버림.
+                    frag = txt.strip()
+                    if not is_ref and mode != 'ref' and blocks and blocks[-1][0] == 'h2':
+                        if re.fullmatch(r'\d+', frag):
+                            blocks[-1][1] = (blocks[-1][1] + ' ' + frag).strip()
+                            continue
+                        if re.fullmatch(r'[.\-·:／/]+', frag):
+                            continue
                     flush()
-                    mode = 'ref' if cfg['refs_head'] in txt else 'body'
+                    if is_ref:
+                        mode = 'ref'; continue   # 참고문헌 대제목은 assemble()이 별도로 붙임(중복 방지)
+                    mode = 'body'
                     blocks.append(['h2', txt]); continue
+                # 참고문헌 헤딩이 본문과 같은 소자체(size<15)인 문서(230211 등) 대응
+                if mode != 'ref' and len(txt.strip()) <= 15 and ns(txt) == ns(cfg['refs_head']):
+                    flush(); mode = 'ref'; continue
                 if mode == 'ref':
                     refs_raw.append((round(x0), raw)); continue
-                if 11.5 < size < 13 and bold and re.match(r'^\d+(\.\d+)*\.?\s', txt):
+                if BLO + 0.5 < size < BHI and bold and re.match(r'^\d+(\.\d+)*\.?\s', txt):
                     flush(); blocks.append(['h3', txt.rstrip('.')]); continue   # 소제목
-                if re.match(r'^<\s*(그림|표)\s*\d', txt) or (re.match(r'^(그림|표)\s*\d+[\.\s]', txt) and size < 11.5):
-                    flush(); continue                              # 캡션 라인 제거(그림 블록은 재사용)
-                if re.match(r'^\s*출처\s*[:：]', txt):
-                    continue                                       # 출처 라인 제거
-                if 11 <= size < 13:                                # 본문
-                    if is_para_start(raw, x0):
+                if re.match(r'^\s*[\[<]\s*(그림|표)\s*\d', txt) or (re.match(r'^\s*(그림|표)\s*\d+[\.\s]', txt) and size < 11.5):
+                    flush(); continue                              # 캡션 라인 제거(그림 블록은 재사용, 앞공백·[·< 접두 포함)
+                if re.match(r'^[\(（]?\s*출처\s*[:：]', txt):
+                    continue                                       # 출처 라인 제거((출처: 포함)
+                if BLO <= size < BHI:                              # 본문
+                    tc = txt.strip()
+                    if re.match(r'^[\(（]?\s*단위\s*[:：]', tc):
+                        continue                                   # (단위: …) 표/차트 라벨 제거
+                    if len(tc) < 45 and re.search(r'(작성|재인용)\s*[)）]\s*$', tc):
+                        continue                                   # 캡션 출처 꼬리(…참고하여 본인 작성)) 잔재 제거
+                    kor = len(re.findall(r'[가-힣]', tc))
+                    if len(tc) >= 8 and kor < 4 and \
+                       len(re.findall(r'[\d—\-.,%/\s]', tc)) / len(tc) > 0.75:
+                        continue                                   # 수치·대시 위주 표 잔존 라인 제거
+                    if is_para_start(raw, x0) and sentence_ended(para):
                         flush()
                     para.append(spans_to_text(spans))
     flush()
