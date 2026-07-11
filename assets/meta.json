@@ -1,0 +1,822 @@
+[
+ {
+  "id": "260113",
+  "title": "K뷰티 산업의 구조적 전환과 파괴적 혁신:에이피알(APR)의 성장 전략을 중심으로",
+  "author": "최호진",
+  "advisor": "권영선",
+  "qual": 6,
+  "excellent": true,
+  "field": "화장품",
+  "firm": "에이피알",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2026",
+  "semester": "봄",
+  "category": "소비재·유통",
+  "pub": "2026년 봄학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "시장확산·캐즘 극복",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "260111",
+  "title": "생태계 기반 플랫폼 봉투화의 경쟁 구도 전환 메커니즘: 쿠팡이츠 사례 분석",
+  "author": "전경근",
+  "advisor": "엄지용",
+  "qual": 6,
+  "excellent": false,
+  "field": "IT",
+  "firm": "쿠팡이츠",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2026",
+  "semester": "봄",
+  "category": "IT·플랫폼",
+  "pub": "2026년 봄학기",
+  "issue": "플랫폼·생태계",
+  "issues": [
+   "플랫폼·생태계",
+   "파괴적 혁신·신시장"
+  ]
+ },
+ {
+  "id": "260108",
+  "title": "건축자재 후발 중소기업 ㈜화영의 형상 혁신과 공공 조달 생태계 주도를 통한 Rule Maker 전환 전략 연구",
+  "author": "박주연",
+  "advisor": "권영선",
+  "qual": 6,
+  "excellent": true,
+  "field": "소부장",
+  "firm": "화영",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2026",
+  "semester": "봄",
+  "category": "기계·장비·부품",
+  "pub": "2026년 봄학기",
+  "issue": "강소기업·딥테크 성장",
+  "issues": [
+   "강소기업·딥테크 성장",
+   "제품혁신·아키텍처",
+   "공공·기술사업화"
+  ]
+ },
+ {
+  "id": "260105",
+  "title": "상온 HMR 산업의 품질 상한선 돌파: CJ제일제당 비비고 국·탕·찌개류를 중심으로",
+  "author": "김진",
+  "advisor": "김병필",
+  "qual": 7,
+  "excellent": true,
+  "field": "식품",
+  "firm": "CJ제일제당",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2026",
+  "semester": "봄",
+  "category": "소비재·유통",
+  "pub": "2026년 봄학기",
+  "issue": "디지털 전환·공정혁신",
+  "issues": [
+   "디지털 전환·공정혁신",
+   "제품혁신·아키텍처",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "250215",
+  "title": "LIG 정밀유도무기 기술 혁신의 성공 요인 분석",
+  "author": "이진용",
+  "advisor": "김의석",
+  "qual": 7,
+  "excellent": true,
+  "field": "방위",
+  "firm": "LIG",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "가을",
+  "category": "항공·방산",
+  "pub": "2025년 가을학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "공공·기술사업화",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "250210",
+  "title": "바이오 딥테크 후발기업의 탈추격 성장 메커니즘 연구: ㈜듀셀의 인공혈소판 공정 혁신 및 생태계 주도 전략을 중심으로",
+  "author": "유환기",
+  "advisor": "김병필",
+  "qual": 7,
+  "excellent": true,
+  "field": "바이오",
+  "firm": "듀셀",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "가을",
+  "category": "바이오·헬스케어",
+  "pub": "2025년 가을학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "강소기업·딥테크 성장",
+   "플랫폼·생태계"
+  ]
+ },
+ {
+  "id": "250205",
+  "title": "흡수역량을 통한 최초의 한국형 전투기(KF-21) 개발 성공: KF-16 면허생산과 T-50 공동개발 사례 중심으로",
+  "author": "김다운",
+  "advisor": "윤태성",
+  "qual": 7,
+  "excellent": true,
+  "field": "방위",
+  "firm": "KAI",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "가을",
+  "category": "항공·방산",
+  "pub": "2025년 가을학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "공공·기술사업화"
+  ]
+ },
+ {
+  "id": "250111",
+  "title": "CNT 개발로 살펴본 LG 화학 R&D 의 개방형혁신과 핵심역량에 대한 고찰",
+  "author": "이진혁",
+  "advisor": "엄지용",
+  "qual": 6,
+  "excellent": false,
+  "field": "석유화학",
+  "firm": "LG 화학",
+  "firmInfo": "",
+  "themes": [
+   "인터뷰"
+  ],
+  "year": "2025",
+  "semester": "봄",
+  "category": "배터리·소재",
+  "pub": "2025년 봄학기",
+  "issue": "R&D·특허 전략",
+  "issues": [
+   "R&D·특허 전략",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "250110",
+  "title": "후발 중소기업의 글로벌 과점 시장 진입 전략: ㈜아이센스의 신시장형 파괴적 혁신 사례 분석",
+  "author": "이주영",
+  "advisor": "이덕희",
+  "qual": 7,
+  "excellent": true,
+  "field": "헬스케어",
+  "firm": "아이센스",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "봄",
+  "category": "바이오·헬스케어",
+  "pub": "2025년 봄학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "기술추격·흡수역량",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "250108",
+  "title": "전유성 체계 기반의 지속가능한 경쟁우위 :TE Connectivity의 글로벌 범용 부품 시장 리더십 구축 사례 연구",
+  "author": "여진환",
+  "advisor": "김의석",
+  "qual": 7,
+  "excellent": true,
+  "field": "부품",
+  "firm": "TE Connectivity",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "봄",
+  "category": "기계·장비·부품",
+  "pub": "2025년 봄학기",
+  "issue": "R&D·특허 전략",
+  "issues": [
+   "R&D·특허 전략",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "250103",
+  "title": "MaaS 생태계의 파괴적혁신: ㈜쏘카의 카셰어링 사례를 중심으로",
+  "author": "김은주",
+  "advisor": "김영태",
+  "qual": 7,
+  "excellent": false,
+  "field": "플랫폼",
+  "firm": "쏘카",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2025",
+  "semester": "봄",
+  "category": "IT·플랫폼",
+  "pub": "2025년 봄학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "플랫폼·생태계",
+   "디지털 전환·공정혁신"
+  ]
+ },
+ {
+  "id": "240210",
+  "title": "스모크 프리(Smoke-Free)를 향한 세상에서담배 제조사의 지속 성장을 위한 혁신 전략: KT&G 사례를 중심으로",
+  "author": "황선진",
+  "advisor": "김의석",
+  "qual": 6,
+  "excellent": false,
+  "field": "담배",
+  "firm": "KT&G",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2024",
+  "semester": "가을",
+  "category": "소비재·유통",
+  "pub": "2024년 가을학기",
+  "issue": "시장확산·캐즘 극복",
+  "issues": [
+   "시장확산·캐즘 극복",
+   "제품혁신·아키텍처",
+   "기술추격·흡수역량"
+  ]
+ },
+ {
+  "id": "240209",
+  "title": "글로벌 1 위 알람 앱 ‘Alarmy’를 개발한 딜라이트룸의 성공 요인 분석",
+  "author": "조동인",
+  "advisor": "윤태성",
+  "qual": 7,
+  "excellent": true,
+  "field": "앱개발",
+  "firm": "딜라이트룸",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2024",
+  "semester": "가을",
+  "category": "IT·플랫폼",
+  "pub": "2024년 가을학기",
+  "issue": "시장확산·캐즘 극복",
+  "issues": [
+   "시장확산·캐즘 극복",
+   "플랫폼·생태계",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "240207",
+  "title": "딥테크 혁신으로 시장의 틈을 공략하다: 파크시스템스 사례를 중심으로",
+  "author": "이선주",
+  "advisor": "조항정",
+  "qual": 7,
+  "excellent": false,
+  "field": "",
+  "firm": "파크시스템스",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2024",
+  "semester": "가을",
+  "category": "기계·장비·부품",
+  "pub": "2024년 가을학기",
+  "issue": "강소기업·딥테크 성장",
+  "issues": [
+   "강소기업·딥테크 성장",
+   "시장확산·캐즘 극복",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "240205",
+  "title": "제조업의 디지털 전환 성공 전략 :HD현대인프라코어 사례를 중심으로",
+  "author": "서민호",
+  "advisor": "조항정",
+  "qual": 7,
+  "excellent": true,
+  "field": "기계",
+  "firm": "HD현대인프라코어",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2024",
+  "semester": "가을",
+  "category": "기계·장비·부품",
+  "pub": "2024년 가을학기",
+  "issue": "디지털 전환·공정혁신",
+  "issues": [
+   "디지털 전환·공정혁신",
+   "기술추격·흡수역량"
+  ]
+ },
+ {
+  "id": "240204",
+  "title": "농기계 업체의 혁신성장 요인에 관한 연구: (주)대동 트랙터 사례를 중심으로",
+  "author": "박아령",
+  "advisor": "김영태",
+  "qual": 7,
+  "excellent": false,
+  "field": "기계",
+  "firm": "대동",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2024",
+  "semester": "가을",
+  "category": "기계·장비·부품",
+  "pub": "2024년 가을학기",
+  "issue": "강소기업·딥테크 성장",
+  "issues": [
+   "강소기업·딥테크 성장",
+   "제품혁신·아키텍처",
+   "기술추격·흡수역량"
+  ]
+ },
+ {
+  "id": "240109",
+  "title": "이차전지 소재 중소기업의 혁신 성공사례 연구: ㈜엔켐의 전해액 사례를 중심으로",
+  "author": "황보람",
+  "advisor": "김영태",
+  "qual": 8,
+  "excellent": true,
+  "field": "",
+  "firm": "엔캠",
+  "firmInfo": "",
+  "themes": [
+   "글1",
+   "정책"
+  ],
+  "year": "2024",
+  "semester": "봄",
+  "category": "배터리·소재",
+  "pub": "2024년 봄학기",
+  "issue": "강소기업·딥테크 성장",
+  "issues": [
+   "강소기업·딥테크 성장",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "240105",
+  "title": "기술 추격에서 파괴적 혁신까지: T-50 개발 성공 사례를 중심으로",
+  "author": "박재형",
+  "advisor": "김의석",
+  "qual": 7,
+  "excellent": true,
+  "field": "항공",
+  "firm": "KAI",
+  "firmInfo": "",
+  "themes": [
+   "성공사례",
+   "파괴적혁신",
+   "지식경영"
+  ],
+  "year": "2024",
+  "semester": "봄",
+  "category": "항공·방산",
+  "pub": "2024년 봄학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "기술추격·흡수역량",
+   "공공·기술사업화"
+  ]
+ },
+ {
+  "id": "240102",
+  "title": "기술융합과 캐즘 극복을 통한 기업혁신 사례연구: 안마의자 기업 ㈜바디프랜드를 중심으로",
+  "author": "권오경",
+  "advisor": "김영태",
+  "qual": 7,
+  "excellent": false,
+  "field": "안마의자",
+  "firm": "바디프렌즈",
+  "firmInfo": "",
+  "themes": [
+   "글1",
+   "기술융합",
+   "캐즘",
+   "렌탈"
+  ],
+  "year": "2024",
+  "semester": "봄",
+  "category": "소비재·유통",
+  "pub": "2024년 봄학기",
+  "issue": "시장확산·캐즘 극복",
+  "issues": [
+   "시장확산·캐즘 극복",
+   "R&D·특허 전략",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "230217",
+  "title": "소재부품장비 산업내 B2B 딥테크 벤처기업의 혁신 성장 요인에 관한 연구: 고영테크놀러지 사례를 중심으로",
+  "author": "지수환",
+  "advisor": "윤정호",
+  "qual": 7,
+  "excellent": true,
+  "field": "소부장",
+  "firm": "고영테크놀로지",
+  "firmInfo": "",
+  "themes": [
+   "글1",
+   "제픔혁신",
+   "아키텍처"
+  ],
+  "year": "2023",
+  "semester": "가을",
+  "category": "기계·장비·부품",
+  "pub": "2023년 가을학기",
+  "issue": "강소기업·딥테크 성장",
+  "issues": [
+   "강소기업·딥테크 성장",
+   "시장확산·캐즘 극복",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "230216",
+  "title": "바이오 플랫폼 기업 혁신 전략 연구-할로자임 사례를 중심으로",
+  "author": "정서라",
+  "advisor": "김원준",
+  "qual": 6,
+  "excellent": true,
+  "field": "",
+  "firm": "할로자임",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2023",
+  "semester": "가을",
+  "category": "바이오·헬스케어",
+  "pub": "2023년 가을학기",
+  "issue": "플랫폼·생태계",
+  "issues": [
+   "플랫폼·생태계",
+   "R&D·특허 전략",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "230214",
+  "title": "금융 슈퍼앱 플랫폼 혁신 사례 연구; 토스증권을 중심으로",
+  "author": "장영준",
+  "advisor": "",
+  "qual": 7,
+  "excellent": false,
+  "field": "금융",
+  "firm": "토스",
+  "firmInfo": "",
+  "themes": [
+   "플래폼",
+   "네트워크"
+  ],
+  "year": "2023",
+  "semester": "가을",
+  "category": "IT·플랫폼",
+  "pub": "2023년 가을학기",
+  "issue": "플랫폼·생태계",
+  "issues": [
+   "플랫폼·생태계",
+   "파괴적 혁신·신시장"
+  ]
+ },
+ {
+  "id": "230213",
+  "title": "메신저 앱에서 생태계 확장 사례 – ‘LINE’의 사례를 중심으로",
+  "author": "임해수",
+  "advisor": "한승헌",
+  "qual": 7,
+  "excellent": false,
+  "field": "IT",
+  "firm": "네이버",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2023",
+  "semester": "가을",
+  "category": "IT·플랫폼",
+  "pub": "2023년 가을학기",
+  "issue": "플랫폼·생태계",
+  "issues": [
+   "플랫폼·생태계",
+   "시장확산·캐즘 극복"
+  ]
+ },
+ {
+  "id": "230211",
+  "title": "국내 신선식품 새벽배송 서비스 기업의 혁신사례 연구 – ㈜오아시스 사례 중심으로",
+  "author": "이윤주",
+  "advisor": "윤정호",
+  "qual": 6,
+  "excellent": true,
+  "field": "유통",
+  "firm": "오아시스",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2023",
+  "semester": "가을",
+  "category": "소비재·유통",
+  "pub": "2023년 가을학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "디지털 전환·공정혁신",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "230205",
+  "title": "자동차 산업 전동화 전환 혁신 전략 - 현대자동차 사례를 중심으로",
+  "author": "진기호",
+  "advisor": "윤정호",
+  "qual": 8,
+  "excellent": false,
+  "field": "자동차",
+  "firm": "현대자동차",
+  "firmInfo": "",
+  "themes": [
+   "아키텍처"
+  ],
+  "year": "2023",
+  "semester": "가을",
+  "category": "제조·중공업",
+  "pub": "2023년 가을학기",
+  "issue": "제품혁신·아키텍처",
+  "issues": [
+   "제품혁신·아키텍처",
+   "디지털 전환·공정혁신"
+  ]
+ },
+ {
+  "id": "230113",
+  "title": "리튬 이온 전지 산업 후발 주자인 LG 에너지솔루션의 전기차 배터리 시장 추격 성공 사례 연구",
+  "author": "민승준",
+  "advisor": "김의석",
+  "qual": 7,
+  "excellent": true,
+  "field": "배터리",
+  "firm": "LG 엔솔",
+  "firmInfo": "",
+  "themes": [
+   "아키텍처"
+  ],
+  "year": "2023",
+  "semester": "봄",
+  "category": "배터리·소재",
+  "pub": "2023년 봄학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "제품혁신·아키텍처",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "230108",
+  "title": "대학의 기술사업화 활성화를 위한 대학기술지주회사의 혁신사례 분석 _ 공동설립형 대학 기술지주 회사 및 해외사례를 중심으로",
+  "author": "김기윤",
+  "advisor": "김영태",
+  "qual": 7,
+  "excellent": false,
+  "field": "",
+  "firm": "대학지주회사",
+  "firmInfo": "",
+  "themes": [
+   "공공",
+   "대학지주"
+  ],
+  "year": "2023",
+  "semester": "봄",
+  "category": "공공·기술사업화",
+  "pub": "2023년 봄학기",
+  "issue": "공공·기술사업화",
+  "issues": [
+   "공공·기술사업화",
+   "시장확산·캐즘 극복",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "230107",
+  "title": "반도체 장비 기업의 유형별 혁신 속성 및 기술지식 영향력 요인 연구",
+  "author": "금연욱",
+  "advisor": "김의석",
+  "qual": 8,
+  "excellent": true,
+  "field": "",
+  "firm": "",
+  "firmInfo": "",
+  "themes": [
+   "통계분석"
+  ],
+  "year": "2023",
+  "semester": "봄",
+  "category": "기계·장비·부품",
+  "pub": "2023년 봄학기",
+  "issue": "R&D·특허 전략",
+  "issues": [
+   "R&D·특허 전략",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "230104",
+  "title": "국내 제약 기업의 글로벌 사업화 성공 요인 분석 :대웅제약 나보타 사례를 중심으로",
+  "author": "최형기",
+  "advisor": "김영태",
+  "qual": 7,
+  "excellent": false,
+  "field": "제약",
+  "firm": "대웅",
+  "firmInfo": "",
+  "themes": [
+   "흡수"
+  ],
+  "year": "2023",
+  "semester": "봄",
+  "category": "바이오·헬스케어",
+  "pub": "2023년 봄학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "R&D·특허 전략",
+   "시장확산·캐즘 극복"
+  ]
+ },
+ {
+  "id": "230101",
+  "title": "1호 연구소기업 콜마비앤에이치의 혁신사례 분석- 진입전략과 확장전략을 중심으로",
+  "author": "염태민",
+  "advisor": "윤정호",
+  "qual": 7,
+  "excellent": false,
+  "field": "바이오",
+  "firm": "콜마",
+  "firmInfo": "",
+  "themes": [
+   "공공 ",
+   "연구소기업"
+  ],
+  "year": "2023",
+  "semester": "봄",
+  "category": "바이오·헬스케어",
+  "pub": "2023년 봄학기",
+  "issue": "공공·기술사업화",
+  "issues": [
+   "공공·기술사업화",
+   "강소기업·딥테크 성장",
+   "시장확산·캐즘 극복"
+  ]
+ },
+ {
+  "id": "220210",
+  "title": "현대중공업 엔진기계 사업의 혁신 사례연구: 후발기업의 경쟁전략을 중심으로",
+  "author": "신현호",
+  "advisor": "김병필",
+  "qual": 7,
+  "excellent": false,
+  "field": "중공업",
+  "firm": "현대중공업",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2022",
+  "semester": "가을",
+  "category": "제조·중공업",
+  "pub": "2022년 가을학기",
+  "issue": "기술추격·흡수역량",
+  "issues": [
+   "기술추격·흡수역량",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "220201",
+  "title": "고용과 성장의 관점에서 본 슈퍼 가젤형기업 혁신 사례연구 –(주)프레시지 사례를 중심으로",
+  "author": "공다영",
+  "advisor": "윤태성",
+  "qual": 7,
+  "excellent": true,
+  "field": "식품",
+  "firm": "프레시지",
+  "firmInfo": "",
+  "themes": [
+   "가젤형",
+   "와해혁신"
+  ],
+  "year": "2022",
+  "semester": "가을",
+  "category": "소비재·유통",
+  "pub": "2022년 가을학기",
+  "issue": "파괴적 혁신·신시장",
+  "issues": [
+   "파괴적 혁신·신시장",
+   "강소기업·딥테크 성장"
+  ]
+ },
+ {
+  "id": "210204",
+  "title": "한국형 스마트공장 혁신 전략 연구; 포스코 사례로부터 시사점 도출",
+  "author": "김민종",
+  "advisor": "윤정호",
+  "qual": 6,
+  "excellent": true,
+  "field": "철강",
+  "firm": "포스코",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2021",
+  "semester": "가을",
+  "category": "제조·중공업",
+  "pub": "2021년 가을학기",
+  "issue": "디지털 전환·공정혁신",
+  "issues": [
+   "디지털 전환·공정혁신",
+   "제품혁신·아키텍처"
+  ]
+ },
+ {
+  "id": "210203",
+  "title": "웹툰 비즈니스 혁신 사례 연구: 플랫폼 비즈니스와 플라이휠 효과",
+  "author": "강보배",
+  "advisor": "윤정호",
+  "qual": 7,
+  "excellent": true,
+  "field": "엔터",
+  "firm": "네이버 카카오",
+  "firmInfo": "",
+  "themes": [
+   "소프트이노",
+   "플랫폼",
+   "Flywheel"
+  ],
+  "year": "2021",
+  "semester": "가을",
+  "category": "IT·플랫폼",
+  "pub": "2021년 가을학기",
+  "issue": "플랫폼·생태계",
+  "issues": [
+   "플랫폼·생태계",
+   "파괴적 혁신·신시장"
+  ]
+ },
+ {
+  "id": "210107",
+  "title": "조선산업 제품 아키텍쳐와 기술개발전략",
+  "author": "서용진",
+  "advisor": "김갑수",
+  "qual": 7,
+  "excellent": false,
+  "field": "선박",
+  "firm": "대우조선해양",
+  "firmInfo": "",
+  "themes": [
+   "아키텍쳐"
+  ],
+  "year": "2021",
+  "semester": "봄",
+  "category": "제조·중공업",
+  "pub": "2021년 봄학기",
+  "issue": "제품혁신·아키텍처",
+  "issues": [
+   "제품혁신·아키텍처",
+   "R&D·특허 전략"
+  ]
+ },
+ {
+  "id": "200104",
+  "title": "특허 분석을 통한 DJI社의 혁신 전략 연구",
+  "author": "김혜주",
+  "advisor": "김병필",
+  "qual": 7,
+  "excellent": true,
+  "field": "드론 항공",
+  "firm": "dji",
+  "firmInfo": "",
+  "themes": [],
+  "year": "2020",
+  "semester": "봄",
+  "category": "항공·방산",
+  "pub": "2020년 봄학기",
+  "issue": "R&D·특허 전략",
+  "issues": [
+   "R&D·특허 전략",
+   "파괴적 혁신·신시장"
+  ]
+ }
+]

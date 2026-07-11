@@ -1,0 +1,7 @@
+# OS
+Thumbs.db
+.DS_Store
+# 로컬 임시
+*.zip
+*.part*
+_build/imgpool/
