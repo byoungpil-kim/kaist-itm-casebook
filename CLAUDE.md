@@ -139,7 +139,25 @@ python -m http.server 8000              # 육안 확인
 - 각 사례 페이지에 `원문 전체 보기` 버튼과 사이드바(`facets`)가 있는지
 - `fulltext/{id}/index.html`의 `img/…` 참조가 깨지지 않았는지
 
-## 6. 원문 전문(fulltext) 재생성 제약 — 중요
+## 6. 원문 전문(fulltext) 품질 개선 — 재추출 파이프라인 (2026-07 도입, 진행 중)
+
+**현재 fulltext 본문 품질 작업의 표준 도구는 `_build/reextract_fulltext.py`다.** 구 gen_fulltext2.py
+산출물의 구조적 결함(줄바꿈 띄어쓰기 누락·문장 분리, 각주 본문 흡수, 표 텍스트 잔존, 미주 무링크,
+자동 크롭의 백지 이미지)을 **저장소 내 `pdf/{id}.pdf`에서 PyMuPDF로 본문을 재추출**해 근본 수정한다.
+그림 이미지는 기존 `fulltext/{id}/img/*.webp`를 재사용(백지 자동 제거·대체)하므로 imgpool이 필요 없다.
+
+- 실행(저장소 루트에서): `python _build/reextract_fulltext.py <사례ID>` → 해당 fulltext를 직접 갱신.
+  `--dry`로 통계만 확인 가능. 상세 원리·새 사례 CONFIG 추가법은 스크립트 상단 docstring 참조.
+- 의존성: `pip install PyMuPDF Pillow`. Windows 파이썬은 파일 IO에 utf-8 명시 필요(스크립트 반영됨).
+- **파일별 CONFIG**(body_start·refs_head·table_pages)를 스크립트의 `CFG`에 추가해야 한다. 파일마다
+  본문 시작 페이지·참고문헌 헤더·문단 들여쓰기 방식·캡션 형식이 달라 육안 확인이 필수다.
+- 절차: CONFIG 추가 → 실행 → `python -m http.server`로 육안 검증(그림 배치·표 잔존·띄어쓰기·미주 링크)
+  → `git diff` 확인 → 사용자 검토 후 커밋. **한 편씩 검토하며 진행**(발주자 지시).
+- 진행 현황: **260113·260111 완료·커밋**. 나머지 34편 대기.
+- 알려진 한계: 그림 배치는 기존 HTML의 문단-그림 인접성을 시그니처로 정렬하므로 드물게 어긋날 수 있음
+  (육안 확인). 각주 1·2가 동일 문구 등 원문 자체의 특이점은 그대로 반영(사실 충실성).
+
+구 방식(`gen_fulltext2.py`)은 아래 제약으로 **일반 유지보수에서 사용하지 않는다**(참고용 보존):
 
 `_build/gen_fulltext2.py`는 다음 외부 자료를 요구하며, **이 저장소에는 포함되어 있지 않다**:
 - `_build/imgpool/{id}/f-*.png` — 원문 PDF에서 `pdfimages -png -p`로 추출한 그림 풀(총 수백 MB)
