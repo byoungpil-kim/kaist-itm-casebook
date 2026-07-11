@@ -7,9 +7,15 @@
 ## 1. 프로젝트 한눈에 보기
 
 - 순수 정적 사이트. 프레임워크·빌드체인 없음. HTML + 단일 CSS + 바닐라 JS(필터/검색)만 사용한다.
-- `index.html`과 `cases/*.html`은 **생성물**이다. 직접 수정하지 말고 원본을 고친 뒤 재빌드한다.
-  - 기사 본문 원본: `_build/cases_src/{사례ID}_body.html`
-  - 메타데이터: `assets/meta.json`
+- `index.html`은 **순수 생성물**이다(카드·필터·이전/다음 링크). 직접 수정하지 말고 `assets/meta.json`을
+  고친 뒤 `python3 _build/build.py`로 재생성한다.
+- `cases/*.html`은 **본문은 직접 편집, 나머지(헤더·사이드바·다운로드바 등 chrome)는 생성**이다.
+  - **기사 본문**: `cases/{사례ID}.html` 안의 `<!-- BODY:START -->` ~ `<!-- BODY:END -->` 사이를
+    **직접 편집한다.** 이 영역이 본문의 유일한 원본(source of truth)이다. build.py는 재빌드 시 이
+    영역을 페이지에서 도로 읽어 현재 템플릿으로 다시 감싸므로 직접 편집이 보존된다.
+  - `_build/cases_src/{사례ID}_body.html`은 **신규 사례 최초 생성용 시드일 뿐**이다. 기존 사례의 본문을
+    바꿀 때는 시드가 아니라 `cases/{사례ID}.html`을 고친다(시드는 낡아도 무방).
+  - 메타데이터(제목·저자·쟁점·분류 등): `assets/meta.json` → 수정 후 `python3 _build/build.py`.
   - 생성기: `python3 _build/build.py`
 - `fulltext/`(원문 전체 열람)와 `assets/img/`(기사 그림)는 이미 생성 완료된 산출물이며,
   일반 유지보수에서 재생성할 일이 거의 없다(재생성 제약은 §6 참조).
@@ -57,9 +63,12 @@
 ## 3. 파일 구조와 데이터 흐름
 
 ```
-assets/meta.json  ─┐
-                   ├─→ python3 _build/build.py ─→ index.html, cases/{id}.html
-_build/cases_src/{id}_body.html ─┘
+assets/meta.json ─→ python3 _build/build.py ─→ index.html
+                                            └─→ cases/{id}.html (chrome=템플릿, 본문=아래)
+
+cases/{id}.html 의 <!-- BODY:START -->~<!-- BODY:END --> = 본문 원본(직접 편집)
+   └─ build.py가 재빌드 시 이 영역을 도로 읽어 보존. cases_src는 신규 사례 시드로만 사용.
+_build/cases_src/{id}_body.html ─(신규 사례 최초 1회만)─→ cases/{id}.html 본문 시드
 
 _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext2.py ─→ fulltext/{id}/
 ```
@@ -83,10 +92,14 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 
 ## 4. 자주 하는 작업 절차
 
-### 기사 내용 수정 (오탈자, 문장, 그림 교체 등)
-1. `_build/cases_src/{id}_body.html` 수정. 사실관계는 `_build/extract/{id}.txt`로 검증.
+### 기사 내용 수정 (오탈자, 문장, 그림 교체 등) — 저자 수정 요청 등 가장 흔한 작업
+1. `cases/{id}.html`의 `<!-- BODY:START -->` ~ `<!-- BODY:END -->` 사이를 **직접 편집**한다.
+   (원문 페이지도 바꿔야 하면 `fulltext/{id}/index.html`도 같이 직접 편집.) 사실관계는
+   `_build/extract/{id}.txt`로 검증. 마커 밖(헤더·사이드바 등)은 건드리지 않는다 — 재빌드 시 덮어써진다.
 2. 그림 교체 시 새 이미지를 `assets/img/{id}/`에 넣고 `../assets/img/{id}/파일명` 경로로 참조.
-3. `python3 _build/build.py` 실행.
+3. 본문만 고쳤다면 `build.py` 재실행은 **불필요**하다(페이지가 이미 최종본). 단 템플릿(헤더·푸터·
+   사이드바·다운로드바)이나 `meta.json`을 함께 고쳤다면 `python3 _build/build.py`로 재빌드한다.
+   재빌드해도 본문 직접 편집은 마커 덕분에 보존된다.
 4. 검증(§5) 후 커밋.
 
 ### 사례 삭제 (예: 최종 15~20편 선정 반영)
@@ -101,7 +114,8 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 3. `assets/meta.json`에 항목 추가 (issue/category는 기존 9/8종 중에서 선택).
 4. 원문 전체 페이지 생성(§6 제약 확인) 또는 기존 사례의 `fulltext/{id}/index.html`을 복제해
    같은 마크업 구조(`.ft-body`, `.ftcap`, `.ftsrc`, `.ftfig`)로 수작업 작성.
-5. `python3 _build/build.py` → 검증 → 커밋.
+5. `python3 _build/build.py` → 검증 → 커밋. (첫 빌드가 `cases_src` 시드를 `cases/{id}.html`에
+   심는다. 이후 이 사례의 본문 수정은 시드가 아니라 `cases/{id}.html`을 직접 고친다 — §4 "기사 내용 수정".)
 
 ### 분류 체계 변경
 `_build/build.py` 상단의 `ISSUES` / `CATS` 배열과 `assets/meta.json`의 각 항목을 함께 수정한 뒤 재빌드.

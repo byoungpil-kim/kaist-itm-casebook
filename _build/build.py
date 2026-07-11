@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Static site builder: generates index.html and wraps case body fragments into full pages."""
+"""Static site builder: generates index.html and wraps case bodies into full pages.
+
+Case body source-of-truth: the generated cases/{id}.html IS the editable source
+for its body. build_case() reads the body back out of the existing page (between
+the BODY_START/BODY_END markers) and re-wraps it in the current template, so hand
+edits to cases/*.html survive a rebuild. cases_src/{id}_body.html is only the seed
+for a brand-new case (used when cases/{id}.html does not yet exist).
+"""
 import json, os, html, glob, re
 
 # repo layout: this script lives in _build/, site root is the parent directory
@@ -10,6 +17,24 @@ by_id = {m['id']: m for m in meta}
 ISSUES = ['파괴적 혁신·신시장', '기술추격·흡수역량', '플랫폼·생태계', '강소기업·딥테크 성장',
           '디지털 전환·공정혁신', 'R&D·특허 전략', '제품혁신·아키텍처', '시장확산·캐즘 극복', '공공·기술사업화']
 CATS = ['IT·플랫폼', '제조·중공업', '기계·장비·부품', '항공·방산', '바이오·헬스케어', '배터리·소재', '소비재·유통', '공공·기술사업화']
+
+# Markers that delimit the editable body region inside each generated case page.
+BODY_START = '<!-- BODY:START -->'
+BODY_END   = '<!-- BODY:END -->'
+
+def load_body(cid):
+    """Return the case body. Prefers the existing generated page (edit it directly);
+    falls back to the cases_src seed for a brand-new case. None if neither exists."""
+    out_path = f'{W}/cases/{cid}.html'
+    if os.path.exists(out_path):
+        txt = open(out_path, encoding='utf-8').read()
+        s, e = txt.find(BODY_START), txt.find(BODY_END)
+        if s != -1 and e != -1 and e > s:
+            return txt[s + len(BODY_START):e].strip('\n')
+    frag_path = f'{ROOT}/_build/cases_src/{cid}_body.html'
+    if os.path.exists(frag_path):
+        return open(frag_path, encoding='utf-8').read().strip('\n')
+    return None
 
 def header(rel=''):
     return f'''<header class="site-header">
@@ -214,10 +239,9 @@ syncSelects();
 
 def build_case(cid):
     m = by_id[cid]
-    frag_path = f'{ROOT}/_build/cases_src/{cid}_body.html'
-    if not os.path.exists(frag_path):
+    body = load_body(cid)
+    if body is None:
         return False
-    body = open(frag_path, encoding='utf-8').read()
     ids = [x['id'] for x in meta]  # newest first
     i = ids.index(cid)
     prv = by_id[ids[i+1]] if i+1 < len(ids) else None   # older
@@ -275,7 +299,9 @@ def build_case(cid):
   </div>
   <div>
     <main class="art-body case-art">
+{BODY_START}
 {body}
+{BODY_END}
     </main>
     {dl}
     {pn}
