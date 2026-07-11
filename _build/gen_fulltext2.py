@@ -6,12 +6,8 @@ import os, re, sys, json, glob, html
 from collections import Counter
 from PIL import Image
 
-# repo layout: this script lives in _build/, site root is the parent directory.
-# NOTE: regeneration needs the original figure-image pool (imgpool/) and extract texts,
-# which are NOT in this repo (see CLAUDE.md > 원문 전문(fulltext) 재생성).
-import os as _os
-ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
-W = ROOT
+ROOT = '/home/claude'
+W = f'{ROOT}/website'
 meta = {m['id']: m for m in json.load(open(f'{W}/assets/meta.json'))}
 
 HEAD_H2 = [
@@ -75,7 +71,7 @@ def classify(s):
     return 'p'
 
 def gen(cid):
-    txt_path = f'{ROOT}/_build/extract/{cid}.txt'
+    txt_path = f'{W}/extract/{cid}.txt'
     raw = open(txt_path).read()
     pages = raw.split('\f')
     si, sj = find_body_start(pages)
@@ -92,7 +88,7 @@ def gen(cid):
 
     # images by page
     imgs_by_page = {}
-    for f in sorted(glob.glob(f'{ROOT}/_build/imgpool/{cid}/f-*.png')):
+    for f in sorted(glob.glob(f'{ROOT}/imgpool/{cid}/f-*.png')):
         m = re.match(r'f-(\d+)-\d+', os.path.basename(f))
         if m:
             imgs_by_page.setdefault(int(m.group(1)), []).append(f)
@@ -213,79 +209,38 @@ def gen(cid):
         open_caps = [c for c in open_caps if c >= 0][-4:]
     flush(); close_list()
 
-    m = meta[cid]
     body = '\n'.join(parts)
-    page = f'''<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>[원문] {html.escape(m['title'])} | KAIST ITM 사례연구</title>
-<link rel="stylesheet" href="../../assets/style.css">
-<style>
-.ft-body {{ max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }}
-.ft-body p {{ font-size: 16.5px; color: #2A2E35; margin-bottom: 18px; line-height: 1.8; }}
-.ft-body h2 {{ font-size: 23px; font-weight: 800; margin: 46px 0 18px; padding-left: 14px; border-left: 4px solid var(--blue); }}
-.ft-body h3 {{ font-size: 18px; font-weight: 700; margin: 30px 0 12px; color: var(--blue-deep); }}
-.ftcap {{ text-align: center; font-size: 14px !important; color: var(--gray-5) !important; font-weight: 700; margin: 26px 0 6px !important; }}
-.ftsrc {{ text-align: center; font-size: 12.5px !important; color: var(--gray-4) !important; margin: 4px 0 22px !important; }}
-.ftfig {{ margin: 10px 0 26px; }}
-.ftfig img {{ border: 1px solid var(--gray-2); border-radius: 8px; margin: 0 auto; max-width: 100%; }}
-.ftul {{ margin: 0 0 18px 22px; }}
-.ftul li {{ font-size: 16px; color: #2A2E35; margin-bottom: 6px; }}
-.ft-note {{ max-width: 820px; margin: 0 auto; padding: 0 24px; }}
-</style>
-</head>
-<body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="logo" href="../../index.html">
-      <span class="l1">ITM KAIST</span>
-      <span class="l2">KAIST COLLEGE OF BUSINESS</span>
-    </a>
-    <nav class="gnb">
-      <a href="../../index.html" class="on">사례연구 라이브러리</a>
-      <a href="https://itm.kaist.ac.kr" target="_blank" rel="noopener" class="ext">ITM 홈페이지 ↗</a>
-    </nav>
-  </div>
-</header>
-<section class="art-hero">
-  <div class="wrap" style="padding:52px 24px 44px;">
-    <div class="crumb"><a href="../../index.html">사례연구 라이브러리</a> &nbsp;›&nbsp; <a href="../../cases/{cid}.html">기사 보기</a> &nbsp;›&nbsp; 원문 전체</div>
-    <div class="chips"><span class="chip">원문 전체</span></div>
-    <h1 style="font-size:27px;">{html.escape(m['title'])}</h1>
-    <div class="byline">
-      <span><span class="lbl">연구자</span><b>{html.escape(m['author'])}</b></span>
-      <span><span class="lbl">지도교수</span><b>{html.escape(m['advisor']) if m['advisor'] else '-'}</b></span>
-      <span><span class="lbl">발표</span><b>{m['pub']}</b></span>
-    </div>
-  </div>
-</section>
-<div class="ft-note"><div class="notice">본 페이지는 원문 보고서 본문을 웹 열람용으로 변환한 것입니다. 표·수식 등 일부 요소는 원문과 차이가 있을 수 있습니다.</div></div>
-<main class="ft-body">
-{body}
-</main>
-<div class="dlbar"><div class="dlcard">
-  <div><div class="t">기사로 돌아가기</div><div class="s">{html.escape(m['title'])}</div></div>
-  <a class="btn" href="../../cases/{cid}.html">← 기사 보기</a>
-</div></div>
-<footer class="site-footer">
-  <div class="wrap">
-    <div>
-      <div class="f-logo">ITM KAIST <span class="f-sub">TECHNOLOGY &amp; INNOVATION MANAGEMENT</span></div>
-      <p>KAIST 기술경영전문대학원 · Graduate School of Innovation &amp; Technology Management</p>
-    </div>
-    <div class="f-right"><p>ⓒ Copyright by the original author. All rights reserved.<br>본 사례연구의 저작권은 원저자에게 귀속됩니다.<br>사전 허락 없는 무단 전재·복제·배포를 금합니다.</p></div>
-  </div>
-</footer>
-</body>
-</html>'''
-    open(f'{out_dir}/index.html', 'w').write(page)
+    open(f'{out_dir}/index.html', 'w').write(wrap_page(cid, body))
     return len(parts)
 
 def wrap_page(cid, body):
     m = meta[cid]
+    ISSUES = ['파괴적 혁신·신시장', '기술추격·흡수역량', '플랫폼·생태계', '강소기업·딥테크 성장',
+              '디지털 전환·공정혁신', 'R&D·특허 전략', '제품혁신·아키텍처', '시장확산·캐즘 극복', '공공·기술사업화']
+    CATS = ['IT·플랫폼', '제조·중공업', '기계·장비·부품', '항공·방산', '바이오·헬스케어', '배터리·소재', '소비재·유통', '공공·기술사업화']
+    from collections import Counter as _C
+    cnt_issue = _C(i for mm in meta.values() for i in mm['issues'])
+    cnt_cat = _C(mm['category'] for mm in meta.values())
+    import urllib.parse as _u
+    def facet(title, items, counts, group, current):
+        lis = [f'<li><a class="fbtn" href="../../index.html">전체 <span class="n">{len(meta)}</span></a></li>']
+        cur = current if isinstance(current, (list, tuple)) else [current]
+        for it in items:
+            on = ' on' if it in cur else ''
+            lis.append(f'<li><a class="fbtn{on}" href="../../index.html?{group}={_u.quote(it)}">{html.escape(it)} <span class="n">{counts.get(it,0)}</span></a></li>')
+        return f'<div class="facet"><div class="f-hd">{title}</div><ul>{"".join(lis)}</ul></div>'
+    facets = (facet('기술경영 쟁점', ISSUES, cnt_issue, 'issue', m['issues'])
+              + facet('산업 분류', CATS, cnt_cat, 'cat', m['category']))
+    msel = (
+        '<div class="mfilters mfilters-case">'
+        '<select aria-label="기술경영 쟁점으로 찾기" onchange="if(this.value)location.href=\'../../index.html?issue=\'+encodeURIComponent(this.value)">'
+        '<option value="">기술경영 쟁점으로 찾기…</option>'
+        + ''.join(f'<option value="{html.escape(i)}">{html.escape(i)}</option>' for i in ISSUES)
+        + '</select>'
+        '<select aria-label="산업 분류로 찾기" onchange="if(this.value)location.href=\'../../index.html?cat=\'+encodeURIComponent(this.value)">'
+        '<option value="">산업 분류로 찾기…</option>'
+        + ''.join(f'<option value="{html.escape(c)}">{html.escape(c)}</option>' for c in CATS)
+        + '</select></div>')
     return f'''<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -295,7 +250,7 @@ def wrap_page(cid, body):
 <title>[원문] {html.escape(m['title'])} | KAIST ITM 사례연구</title>
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
-.ft-body {{ max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }}
+.ft-body {{ max-width: 820px; margin: 0; padding: 8px 0 40px; }}
 .ft-body p {{ font-size: 16.5px; color: #2A2E35; margin-bottom: 18px; line-height: 1.8; }}
 .ft-body h2 {{ font-size: 23px; font-weight: 800; margin: 46px 0 18px; padding-left: 14px; border-left: 4px solid var(--blue); }}
 .ft-body h3 {{ font-size: 18px; font-weight: 700; margin: 30px 0 12px; color: var(--blue-deep); }}
@@ -306,7 +261,8 @@ def wrap_page(cid, body):
 .ftul {{ margin: 0 0 18px 22px; }}
 .ftul li {{ font-size: 16px; color: #2A2E35; margin-bottom: 6px; }}
 .footnote {{ font-size: 13px !important; color: var(--gray-4) !important; }}
-.ft-note {{ max-width: 820px; margin: 0 auto; padding: 0 24px; }}
+.ft-note {{ max-width: 820px; margin: 0 0 8px; }}
+@media (max-width: 980px) {{ .ft-body {{ max-width: none; }} }}
 </style>
 </head>
 <body>
@@ -324,24 +280,34 @@ def wrap_page(cid, body):
 </header>
 <section class="art-hero">
   <div class="wrap" style="padding:52px 24px 44px;">
-    <div class="crumb"><a href="../../index.html">사례연구 라이브러리</a> &nbsp;›&nbsp; <a href="../../cases/{cid}.html">기사 보기</a> &nbsp;›&nbsp; 원문 전체</div>
-    <div class="chips"><span class="chip">원문 전체</span></div>
+    <div class="crumb"><a href="../../index.html">사례연구 라이브러리</a> &nbsp;›&nbsp; <a href="../../cases/{cid}.html">요약 보기</a> &nbsp;›&nbsp; 원문 전체</div>
+    <div class="chips"><span class="chip">원문 전체</span><span class="caseno caseno-hero">[No. {cid}]</span></div>
     <h1 style="font-size:27px;">{html.escape(m['title'])}</h1>
     <div class="byline">
       <span><span class="lbl">연구자</span><b>{html.escape(m['author'])}</b></span>
       <span><span class="lbl">지도교수</span><b>{html.escape(m['advisor']) if m['advisor'] else '-'}</b></span>
       <span><span class="lbl">발표</span><b>{m['pub']}</b></span>
     </div>
+    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
-<div class="ft-note"><div class="notice">본 페이지는 원문 보고서 본문을 웹 열람용으로 변환한 것입니다. 표·수식 등 일부 요소는 원문과 차이가 있을 수 있습니다.</div></div>
-<main class="ft-body">
+<div class="wrap layout case-layout">
+  <aside class="facets">
+    {facets}
+    <p class="facet-note">분류를 선택하면 해당 분류의 사례 목록으로 이동합니다.</p>
+  </aside>
+  {msel}
+  <div>
+    <div class="ft-note"><div class="notice">본 페이지는 원문 보고서 본문을 웹 열람용으로 변환한 것입니다. 표·수식 등 일부 요소는 원문과 차이가 있을 수 있습니다.</div></div>
+    <main class="ft-body">
 {body}
-</main>
-<div class="dlbar"><div class="dlcard">
-  <div><div class="t">기사로 돌아가기</div><div class="s">{html.escape(m['title'])}</div></div>
-  <a class="btn" href="../../cases/{cid}.html">← 기사 보기</a>
-</div></div>
+    </main>
+    <div class="dlbar-inner"><div class="dlcard">
+      <div><div class="t">요약으로 돌아가기</div><div class="s">{html.escape(m['title'])}</div></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../../cases/{cid}.html">← 요약 보기</a><a class="btn ghost" href="../../pdf/{cid}.pdf" download>PDF 내려받기 ⭳</a></div>
+    </div></div>
+  </div>
+</div>
 <footer class="site-footer">
   <div class="wrap">
     <div>
@@ -356,11 +322,11 @@ def wrap_page(cid, body):
 
 def gen_scanned(cid):
     """Wrap the vision-transcribed fragment, inserting images sequentially after captions."""
-    frag = open(f'{ROOT}/_build/{cid}_full.html').read()
+    frag = open(f'{ROOT}/fulltext_src/{cid}_full.html').read()
     out_dir = f'{W}/fulltext/{cid}'
     img_dir = f'{out_dir}/img'
     os.makedirs(img_dir, exist_ok=True)
-    imgs = sorted(glob.glob(f'{ROOT}/_build/imgpool/{cid}/f-*.png'))
+    imgs = sorted(glob.glob(f'{ROOT}/imgpool/{cid}/f-*.png'))
     blocks = []
     for f in imgs:
         base = os.path.basename(f)[:-4]

@@ -342,14 +342,14 @@ figcaption b { color: var(--gray-5); }
 .hero.hero-v3 .wrap { position: relative; padding: 46px 24px 40px; }
 .hero.hero-v3 h1 { font-size: 31px; line-height: 1.3; }
 .hero.hero-v3 p.sub { margin-top: 10px; font-size: 15px; max-width: none; color: rgba(255,255,255,0.78); }
-.hero.hero-v3 .wip {
+.wip {
   display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px;
   margin-top: 16px; padding: 8px 14px; border-radius: 6px;
   background: rgba(255,183,77,0.12); border: 1px solid rgba(255,183,77,0.38);
   color: #FFD9A0; font-size: 13px; line-height: 1.55;
 }
-.hero.hero-v3 .wip a { color: #FFE3B8; text-decoration: underline; text-underline-offset: 2px; }
-.hero.hero-v3 .wip a:hover { color: #fff; }
+.wip a { color: #FFE3B8; text-decoration: underline; text-underline-offset: 2px; }
+.wip a:hover { color: #fff; }
 
 /* site-wide work-in-progress watermark (subtle, non-interactive) */
 body::after {
