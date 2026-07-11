@@ -105,12 +105,15 @@ def build_body(CID, cfg):
     d = fitz.open(f'pdf/{CID}.pdf')
 
     # 표 영역(body 페이지만; find_tables는 밀집 텍스트에서 오탐)
+    # 페이지 전체를 표로 오탐(높이>70%)하면 본문이 통째로 제거되므로 그런 rect는 무시한다.
     table_rects = {}
     for pi in cfg['table_pages']:
         if pi >= d.page_count:
             continue
+        ph = d[pi].rect.height
         try:
-            table_rects[pi] = [fitz.Rect(t.bbox) for t in d[pi].find_tables().tables]
+            table_rects[pi] = [fitz.Rect(t.bbox) for t in d[pi].find_tables().tables
+                               if fitz.Rect(t.bbox).height <= 0.7 * ph]
         except Exception:
             table_rects[pi] = []
 
@@ -221,7 +224,9 @@ def build_body(CID, cfg):
                     flush(); mode = 'ref'; continue
                 if mode == 'ref':
                     refs_raw.append((round(x0), raw)); continue
-                if BLO + 0.5 < size < BHI and bold and re.match(r'^\d+(\.\d+)*\.?\s', txt):
+                # 소제목: 본문보다 크거나 같고 대제목(15)보다 작은 볼드 번호 제목.
+                # (본문=소제목 동일 크기인 일반 문서와, 소제목이 더 큰 소자체 문서(230211 size14) 모두 대응)
+                if bs - 0.5 <= size < 15 and bold and re.match(r'^\d+(\.\d+)*\.?\s', txt):
                     flush(); blocks.append(['h3', txt.rstrip('.')]); continue   # 소제목
                 if re.match(r'^\s*[\[<]\s*(그림|표)\s*\d', txt) or (re.match(r'^\s*(그림|표)\s*\d+[\.\s]', txt) and size < 11.5):
                     flush(); continue                              # 캡션 라인 제거(그림 블록은 재사용, 앞공백·[·< 접두 포함)
