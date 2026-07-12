@@ -256,7 +256,7 @@ def build_case(cid):
     dl = f'''<div class="dlbar-inner"><div class="dlcard">
   <div><div class="t">사례연구 원문 보고서</div>
   <div class="s">{html.escape(m['title'])} — {html.escape(m['author'])} ({m['pub']})</div></div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../fulltext/{cid}/index.html">원문 전체 보기 →</a><a class="btn ghost" href="../pdf/{cid}.pdf" target="_blank" rel="noopener">PDF 내려받기 ⭳</a></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn" href="../fulltext/{cid}/index.html">원문 전체 보기 →</a></div>
 </div></div>'''
     page = f'''<!DOCTYPE html>
 <html lang="ko">
