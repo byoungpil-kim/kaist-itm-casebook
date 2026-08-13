@@ -247,7 +247,7 @@ img { max-width: 100%; display: block; }
 
 /* figures */
 figure { margin: 36px 0; }
-figure img { border: 1px solid var(--gray-2); border-radius: 8px; margin: 0 auto; background:#fff; }
+figure img { border: 1px solid var(--gray-2); border-radius: 8px; margin: 0 auto; background:#fff; max-width: min(100%, 680px); }
 figcaption { text-align: center; font-size: 13.5px; color: var(--gray-4); margin-top: 12px; }
 figcaption b { color: var(--gray-5); }
 
