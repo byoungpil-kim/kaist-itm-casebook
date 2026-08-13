@@ -5,3 +5,4 @@ Thumbs.db
 *.zip
 *.part*
 _build/imgpool/
+_x/
