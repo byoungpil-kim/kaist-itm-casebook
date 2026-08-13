@@ -11,10 +11,10 @@
 import sys, io, re, os, json, fitz
 from PIL import Image
 
-CID = '240204'
+CID = '210204'
 SP = r'C:/Users/bpkim/AppData/Local/Temp/claude/C--claude-kaist-itm-casebook/2ceb311a-0bdd-4832-9bbf-8fbf2318b7df/scratchpad'
 DPI = 200
-ONE = re.compile(r'<\s*(그림|표)\s*(\d+)\s*\.')
+ONE = re.compile(r'(그림|표)\s*(\d+)\s*\.')
 d = fitz.open(f'pdf/{CID}.pdf')
 IMGDIR = f'fulltext/{CID}/img'
 
@@ -46,11 +46,12 @@ def rects(pi):
 
 
 found = []
-for pi in range(6, d.page_count):
+for pi in range(4, d.page_count):
     F = frags(pi)
     R = rects(pi)
     # 같은 y의 캡션 조각들을 한 묶음으로
-    caps = [f for f in F if ONE.match(f['t'])]
+    # 캡션은 본문과 같은 12pt다. 제목 줄과 구분하려면 "그림/표 N." 형식만 본다
+    caps = [f for f in F if ONE.match(f['t']) and f['sz'] <= 12.5]
     groups, cur = [], []
     for f in caps:
         if cur and abs(f['y'] - cur[-1]['y']) <= 4:
@@ -129,4 +130,4 @@ io.open(f'{SP}/figs_{CID}.json', 'w', encoding='utf-8').write(
 g = sorted(f['num'] for f in found if f['kind'] == '그림')
 t = sorted(f['num'] for f in found if f['kind'] == '표')
 print(f"그림 {g}\n표   {t}")
-print("그림 누락:", sorted(set(range(1, 31)) - set(g)), "| 표 누락:", sorted(set(range(1, 16)) - set(t)))
+print("그림 누락:", sorted(set(range(1, 17)) - set(g)), "| 표 누락:", sorted(set(range(1, 21)) - set(t)))
