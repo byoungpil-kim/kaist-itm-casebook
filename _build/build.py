@@ -149,7 +149,6 @@ def build_index():
   <div class="wrap">
     <h1>기술과 경영의 접점에서 배우는 <span class="en">ITM Case Study</span> 라이브러리</h1>
     <p class="sub">KAIST 기술경영전문대학원(ITM) 석사과정의 기업 혁신 사례연구 가운데 우수사례를 선별해 소개합니다.</p>
-    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
 <section class="grid-area">
@@ -280,7 +279,6 @@ def build_case(cid):
       <span><span class="lbl">발표</span><b>{m['pub']}</b></span>
       {f'<span><span class="lbl">대상 기업</span><b>{html.escape(m["firm"])}</b></span>' if m['firm'] else ''}
     </div>
-    <p class="wip">⚠ 본 사이트는 현재 제작 중인 초안(Work in Progress)으로 최종본이 아니며, 내용은 예고 없이 수정될 수 있습니다. 수정 요청·문의: <a href="mailto:byoungpil.kim@kaist.ac.kr">byoungpil.kim@kaist.ac.kr</a></p>
   </div>
 </section>
 <div class="wrap layout case-layout">
