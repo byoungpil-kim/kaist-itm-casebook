@@ -18,7 +18,7 @@ ISSUES = ['제품 공정 및 아키텍처', '개방형 혁신 및 생태계', 'R
           '파괴적 혁신 및 신시장 창출', '시장 확산 및 사업화', '기술창업 및 벤처투자', '디지털 전환',
           '조직 역량 및 혁신 문화']
 CATS = ['기계, 중공업, 건설', '전기, 전자, 반도체', '자동차, 모빌리티', '화학, 소재, 에너지',
-        '바이오, 헬스케어', '항공, 우주, 방산', '서비스, 소비재', '공공, 연구, 교육']
+        '바이오, 헬스케어', '항공, 우주, 방산', '서비스, 플랫폼', '소비재, 유통', '공공, 연구, 교육']
 
 # Markers that delimit the editable body region inside each generated case page.
 BODY_START = '<!-- BODY:START -->'
@@ -76,7 +76,7 @@ def facet_sidebar(rel='', current_issue=None, current_cat=None, interactive=True
     """Sidebar facets. interactive=True → buttons (index JS). False → links back to index."""
     from collections import Counter
     cnt_issue = Counter(i for m in meta for i in m['issues'])
-    cnt_cat = Counter(m['category'] for m in meta)
+    cnt_cat = Counter(c for m in meta for c in m['categories'])
 
     def facet(title, items, counts, group, current):
         total = len(meta)
@@ -102,10 +102,10 @@ def facet_sidebar(rel='', current_issue=None, current_cat=None, interactive=True
 def build_index():
     cards = []
     for m in meta:
-        chips = ''.join(f'<span class="chip">{html.escape(i)}</span>' for i in m['issues']) + f'<span class="chip" style="color:#5a6b80;background:#EEF1F5;">{html.escape(m["category"])}</span>'
+        chips = ''.join(f'<span class="chip">{html.escape(i)}</span>' for i in m['issues']) + ''.join(f'<span class="chip" style="color:#5a6b80;background:#EEF1F5;">{html.escape(c)}</span>' for c in m['categories'])
         firm = html.escape(m['firm']) if m['firm'] else '&nbsp;'
-        s = (m['title']+' '+m['firm']+' '+m['author']+' '+m['category']+' '+' '.join(m['issues'])).lower()
-        cards.append(f'''<article class="card" data-cat="{html.escape(m['category'])}" data-issue="{html.escape('|'.join(m['issues']))}"
+        s = (m['title']+' '+m['firm']+' '+m['author']+' '+' '.join(m['categories'])+' '+' '.join(m['issues'])).lower()
+        cards.append(f'''<article class="card" data-cat="{html.escape('|'.join(m['categories']))}" data-issue="{html.escape('|'.join(m['issues']))}"
   data-s="{html.escape(s + ' ' + m['id'])}">
   <div class="top">{chips}<span class="caseno">[No. {m['id']}]</span></div>
   <h3><a href="cases/{m['id']}.html">{html.escape(m['title'])}</a></h3>
@@ -218,7 +218,7 @@ function apply() {{
   let n = 0;
   document.querySelectorAll('#grid .card').forEach(c => {{
     const okI = (sel.issue === '전체' || c.dataset.issue.split('|').includes(sel.issue));
-    const okC = (sel.cat === '전체' || c.dataset.cat === sel.cat);
+    const okC = (sel.cat === '전체' || c.dataset.cat.split('|').includes(sel.cat));
     const okQ = (!q || c.dataset.s.includes(q));
     const show = okI && okC && okQ;
     c.style.display = show ? '' : 'none';
@@ -253,7 +253,7 @@ def build_case(cid):
     if nxt:
         pn += f'<a class="pn next" href="{nxt["id"]}.html"><div class="dir">다음 사례 →</div><div class="ttl">{html.escape(nxt["title"])}</div></a>'
     pn += '</div>'
-    chips = ''.join(f'<span class="chip">{html.escape(i)}</span>' for i in m['issues']) + f'<span class="chip">{html.escape(m["category"])}</span>'
+    chips = ''.join(f'<span class="chip">{html.escape(i)}</span>' for i in m['issues']) + ''.join(f'<span class="chip">{html.escape(c)}</span>' for c in m['categories'])
     dl = f'''<div class="dlbar-inner"><div class="dlcard">
   <div><div class="t">사례연구 원문 보고서</div>
   <div class="s">{html.escape(m['title'])} — {html.escape(m['author'])} ({m['pub']})</div></div>
@@ -285,7 +285,7 @@ def build_case(cid):
 </section>
 <div class="wrap layout case-layout">
   <aside class="facets">
-    {facet_sidebar(rel='../', current_issue=m['issues'], current_cat=m['category'], interactive=False)}
+    {facet_sidebar(rel='../', current_issue=m['issues'], current_cat=m['categories'], interactive=False)}
   </aside>
   <div class="mfilters mfilters-case">
     <select aria-label="기술경영 쟁점으로 찾기" onchange="if(this.value)location.href='../index.html?issue='+encodeURIComponent(this.value)">

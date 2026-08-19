@@ -12,7 +12,10 @@
     "themes": [],
     "year": "2026",
     "semester": "봄",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2026년 봄학기",
     "issue": "파괴적 혁신 및 신시장 창출",
     "issues": [
@@ -33,7 +36,10 @@
     "themes": [],
     "year": "2026",
     "semester": "봄",
-    "category": "서비스, 소비재",
+    "category": "서비스, 플랫폼",
+    "categories": [
+      "서비스, 플랫폼"
+    ],
     "pub": "2026년 봄학기",
     "issue": "개방형 혁신 및 생태계",
     "issues": [
@@ -54,6 +60,9 @@
     "year": "2026",
     "semester": "봄",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2026년 봄학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -74,7 +83,10 @@
     "themes": [],
     "year": "2026",
     "semester": "봄",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2026년 봄학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -96,6 +108,10 @@
     "year": "2025",
     "semester": "가을",
     "category": "항공, 우주, 방산",
+    "categories": [
+      "항공, 우주, 방산",
+      "공공, 연구, 교육"
+    ],
     "pub": "2025년 가을학기",
     "issue": "기술 추격 및 흡수 역량",
     "issues": [
@@ -117,6 +133,10 @@
     "year": "2025",
     "semester": "가을",
     "category": "바이오, 헬스케어",
+    "categories": [
+      "바이오, 헬스케어",
+      "공공, 연구, 교육"
+    ],
     "pub": "2025년 가을학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -139,6 +159,10 @@
     "year": "2025",
     "semester": "가을",
     "category": "항공, 우주, 방산",
+    "categories": [
+      "항공, 우주, 방산",
+      "공공, 연구, 교육"
+    ],
     "pub": "2025년 가을학기",
     "issue": "기술 추격 및 흡수 역량",
     "issues": [
@@ -161,6 +185,9 @@
     "year": "2025",
     "semester": "봄",
     "category": "바이오, 헬스케어",
+    "categories": [
+      "바이오, 헬스케어"
+    ],
     "pub": "2025년 봄학기",
     "issue": "파괴적 혁신 및 신시장 창출",
     "issues": [
@@ -182,6 +209,9 @@
     "year": "2025",
     "semester": "봄",
     "category": "전기, 전자, 반도체",
+    "categories": [
+      "전기, 전자, 반도체"
+    ],
     "pub": "2025년 봄학기",
     "issue": "R&D 및 지식재산 전략",
     "issues": [
@@ -202,7 +232,10 @@
     "themes": [],
     "year": "2024",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2024년 가을학기",
     "issue": "파괴적 혁신 및 신시장 창출",
     "issues": [
@@ -223,7 +256,10 @@
     "themes": [],
     "year": "2024",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "서비스, 플랫폼",
+    "categories": [
+      "서비스, 플랫폼"
+    ],
     "pub": "2024년 가을학기",
     "issue": "기술창업 및 벤처투자",
     "issues": [
@@ -246,6 +282,9 @@
     "year": "2024",
     "semester": "가을",
     "category": "전기, 전자, 반도체",
+    "categories": [
+      "전기, 전자, 반도체"
+    ],
     "pub": "2024년 가을학기",
     "issue": "기술창업 및 벤처투자",
     "issues": [
@@ -266,6 +305,9 @@
     "year": "2024",
     "semester": "가을",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2024년 가을학기",
     "issue": "디지털 전환",
     "issues": [
@@ -286,6 +328,9 @@
     "year": "2024",
     "semester": "가을",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2024년 가을학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -311,6 +356,10 @@
     "year": "2024",
     "semester": "봄",
     "category": "항공, 우주, 방산",
+    "categories": [
+      "항공, 우주, 방산",
+      "공공, 연구, 교육"
+    ],
     "pub": "2024년 봄학기",
     "issue": "기술 추격 및 흡수 역량",
     "issues": [
@@ -337,7 +386,10 @@
     ],
     "year": "2024",
     "semester": "봄",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2024년 봄학기",
     "issue": "시장 확산 및 사업화",
     "issues": [
@@ -359,6 +411,9 @@
     "year": "2023",
     "semester": "가을",
     "category": "바이오, 헬스케어",
+    "categories": [
+      "바이오, 헬스케어"
+    ],
     "pub": "2023년 가을학기",
     "issue": "개방형 혁신 및 생태계",
     "issues": [
@@ -382,7 +437,10 @@
     ],
     "year": "2023",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "서비스, 플랫폼",
+    "categories": [
+      "서비스, 플랫폼"
+    ],
     "pub": "2023년 가을학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -402,7 +460,10 @@
     "themes": [],
     "year": "2023",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2023년 가을학기",
     "issue": "개방형 혁신 및 생태계",
     "issues": [
@@ -425,6 +486,9 @@
     "year": "2023",
     "semester": "가을",
     "category": "자동차, 모빌리티",
+    "categories": [
+      "자동차, 모빌리티"
+    ],
     "pub": "2023년 가을학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -447,6 +511,10 @@
     "year": "2023",
     "semester": "봄",
     "category": "화학, 소재, 에너지",
+    "categories": [
+      "화학, 소재, 에너지",
+      "자동차, 모빌리티"
+    ],
     "pub": "2023년 봄학기",
     "issue": "기술 추격 및 흡수 역량",
     "issues": [
@@ -471,6 +539,9 @@
     "year": "2023",
     "semester": "봄",
     "category": "공공, 연구, 교육",
+    "categories": [
+      "공공, 연구, 교육"
+    ],
     "pub": "2023년 봄학기",
     "issue": "기술창업 및 벤처투자",
     "issues": [
@@ -494,6 +565,9 @@
     "year": "2023",
     "semester": "봄",
     "category": "전기, 전자, 반도체",
+    "categories": [
+      "전기, 전자, 반도체"
+    ],
     "pub": "2023년 봄학기",
     "issue": "R&D 및 지식재산 전략",
     "issues": [
@@ -517,6 +591,9 @@
     "year": "2023",
     "semester": "봄",
     "category": "바이오, 헬스케어",
+    "categories": [
+      "바이오, 헬스케어"
+    ],
     "pub": "2023년 봄학기",
     "issue": "시장 확산 및 사업화",
     "issues": [
@@ -541,6 +618,10 @@
     "year": "2023",
     "semester": "봄",
     "category": "바이오, 헬스케어",
+    "categories": [
+      "바이오, 헬스케어",
+      "공공, 연구, 교육"
+    ],
     "pub": "2023년 봄학기",
     "issue": "기술창업 및 벤처투자",
     "issues": [
@@ -562,6 +643,9 @@
     "year": "2022",
     "semester": "가을",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2022년 가을학기",
     "issue": "기술 추격 및 흡수 역량",
     "issues": [
@@ -585,7 +669,10 @@
     ],
     "year": "2022",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "소비재, 유통",
+    "categories": [
+      "소비재, 유통"
+    ],
     "pub": "2022년 가을학기",
     "issue": "기술창업 및 벤처투자",
     "issues": [
@@ -607,6 +694,9 @@
     "year": "2021",
     "semester": "가을",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2021년 가을학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -631,7 +721,10 @@
     ],
     "year": "2021",
     "semester": "가을",
-    "category": "서비스, 소비재",
+    "category": "서비스, 플랫폼",
+    "categories": [
+      "서비스, 플랫폼"
+    ],
     "pub": "2021년 가을학기",
     "issue": "개방형 혁신 및 생태계",
     "issues": [
@@ -655,6 +748,9 @@
     "year": "2021",
     "semester": "봄",
     "category": "기계, 중공업, 건설",
+    "categories": [
+      "기계, 중공업, 건설"
+    ],
     "pub": "2021년 봄학기",
     "issue": "제품 공정 및 아키텍처",
     "issues": [
@@ -676,6 +772,9 @@
     "year": "2020",
     "semester": "봄",
     "category": "항공, 우주, 방산",
+    "categories": [
+      "항공, 우주, 방산"
+    ],
     "pub": "2020년 봄학기",
     "issue": "R&D 및 지식재산 전략",
     "issues": [

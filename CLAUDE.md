@@ -66,6 +66,11 @@
       머신러닝 예측모델, 230107·250108의 특허DB 분석), 단순 생산 자동화(230101), 제품 사양의
       한 항목(240210의 스마트 온·블루투스), 미래 시사점으로만 언급된 것(250215의 SDWS·AI)은
       넣지 않는다.
+    - **산업 분야도 사례당 1~2개다**(`categories` 배열, 첫 항목이 대표 산업 = `category`).
+      2026-08-19에 엑셀의 `서비스, 소비재`를 `서비스, 플랫폼`과 `소비재, 유통`으로 나누고
+      (사용자 승인), 국책·정부 R&D·기술이전이 사례의 축인 5건(230101·240105·250205·250210·
+      250215)에 `공공, 연구, 교육`을 두 번째로 붙였다. 230113은 전기차 배터리라
+      `화학, 소재, 에너지 + 자동차, 모빌리티`다.
 12. **카드와 사례 페이지에 `[No. 사례ID]`를 표시한다.** 선정 엑셀 목록과 매칭하기 위한 것이므로 제거하지 않는다.
 13. **검색엔진 인덱싱 금지 상태를 유지한다.** 대외 공개 전까지 루트 `robots.txt`(Disallow: /)와
     모든 페이지의 `<meta name="robots" content="noindex, nofollow">`를 제거하지 않는다.
@@ -97,9 +102,10 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 |---|---|---|
 | `id` | 사례 ID (YYSSNN) | 파일명 전체와 연동 |
 | `title`, `author`, `advisor` | 제목·연구자·지도교수 | advisor 없으면 빈 문자열("-"로 표시됨) |
-| `issues` | 기술경영 분야 목록 (9종 중 1~2개) | build.py 상단 `ISSUES` 목록과 일치해야 함. 첫 항목 = 대표 쟁점 |
+| `issues` | 기술경영 분야 목록 (9종 중 1~3개) | build.py 상단 `ISSUES` 목록과 일치해야 함. 첫 항목 = 대표 쟁점 |
 | `issue` | 대표 쟁점 (`issues[0]`) | 브레드크럼 표시용. `issues` 변경 시 함께 갱신 |
-| `category` | 산업 분야 (8종) | build.py 상단 `CATS` 목록과 일치해야 함 |
+| `categories` | 산업 분야 목록 (9종 중 1~2개) | build.py 상단 `CATS` 목록과 일치해야 함. 첫 항목 = 대표 산업 |
+| `category` | 대표 산업 (`categories[0]`) | 브레드크럼 표시용. `categories` 변경 시 함께 갱신 |
 | `firm`, `firmInfo`, `field` | 대상 기업 정보 | |
 | `year`, `semester`, `pub` | 발표 시기 | |
 | `excellent`, `qual`, `themes` | 내부 참고용 | **화면 노출 금지** |
@@ -129,7 +135,7 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 1. 원문 보고서에서 텍스트 추출(`pdftotext -layout`) → `_build/extract/{id}.txt`.
 2. `_build/WRITING_GUIDE.md`와 기존 기사 2~3편을 정독한 후 §2 규칙에 맞춰
    `_build/cases_src/{id}_body.html` 작성. 그림은 원문에서 추출해 `assets/img/{id}/`에 저장.
-3. `assets/meta.json`에 항목 추가 (issues는 기술경영 9종 중 1~2개, category는 산업 8종 중 1개).
+3. `assets/meta.json`에 항목 추가 (issues는 기술경영 9종 중 1~3개, categories는 산업 9종 중 1~2개).
 4. 원문 전체 페이지 생성(§6 제약 확인) 또는 기존 사례의 `fulltext/{id}/index.html`을 복제해
    같은 마크업 구조(`.ft-body`, `.ftcap`, `.ftsrc`, `.ftfig`)로 수작업 작성.
 5. `python3 _build/build.py` → 검증 → 커밋. (첫 빌드가 `cases_src` 시드를 `cases/{id}.html`에
