@@ -55,6 +55,22 @@ img { max-width: 100%; display: block; }
 .gnb a:hover, .gnb a.on { color: #fff; text-shadow: 0 0 14px rgba(90,150,255,.9); }
 .gnb a.ext { font-weight: 500; color: rgba(255,255,255,0.6); font-size: 14.5px; }
 .gnb a.ext:hover { color: #fff; }
+/* language switch */
+.gnb a.lang {
+  font-size: 13.5px; font-weight: 600; letter-spacing: .02em;
+  padding: 4px 11px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.34); color: rgba(255,255,255,0.9);
+}
+.gnb a.lang:hover { background: rgba(255,255,255,0.14); color: #fff; text-shadow: none; }
+
+/* machine-translation notice (English edition) */
+.ai-note {
+  max-width: var(--maxw); margin: 40px auto 0; padding: 14px 18px;
+  border: 1px solid var(--gray-3); border-left: 3px solid var(--blue);
+  border-radius: 4px; background: #F7F9FC;
+  font-size: 13.5px; line-height: 1.65; color: var(--gray-5);
+}
+.ai-note b { color: var(--ink); }
 
 /* ---------- Hero (index) ---------- */
 .hero {

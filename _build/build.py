@@ -38,7 +38,9 @@ def load_body(cid):
         return open(frag_path, encoding='utf-8').read().strip('\n')
     return None
 
-def header(rel=''):
+def header(rel='', en_href=None):
+    """en_href: 같은 문서의 영문판 경로. 없으면 영문 메인으로 보낸다."""
+    en = en_href or f'{rel}en/index.html'
     return f'''<header class="site-header">
   <div class="wrap">
     <a class="logo" href="{rel}index.html">
@@ -47,6 +49,7 @@ def header(rel=''):
     </a>
     <nav class="gnb">
       <a href="{rel}index.html" class="on">사례연구 라이브러리</a>
+      <a href="{en}" class="lang">English</a>
       <a href="https://itm.kaist.ac.kr" target="_blank" rel="noopener" class="ext">ITM 홈페이지 ↗</a>
     </nav>
   </div>
@@ -269,7 +272,7 @@ def build_case(cid):
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-{header('../')}
+{header('../', en_href=f'../en/cases/{cid}.html')}
 <section class="art-hero">
   <div class="wrap">
     <div class="crumb"><a href="../index.html">사례연구 라이브러리</a> &nbsp;›&nbsp; {html.escape(m['issue'])} &nbsp;›&nbsp; {html.escape(m['category'])}</div>

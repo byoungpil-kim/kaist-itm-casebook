@@ -1,0 +1,226 @@
+{
+  "_note": "English strings for the /en site. Keyed by case id. Korean names are kept in parentheses on the page so the authoritative form stays visible.",
+  "issues": {
+    "제품 공정 및 아키텍처": "Product, Process & Architecture",
+    "개방형 혁신 및 생태계": "Open Innovation & Ecosystems",
+    "R&D 및 지식재산 전략": "R&D & IP Strategy",
+    "기술 추격 및 흡수 역량": "Technological Catch-up & Absorptive Capacity",
+    "파괴적 혁신 및 신시장 창출": "Disruptive Innovation & New Market Creation",
+    "시장 확산 및 사업화": "Market Diffusion & Commercialization",
+    "기술창업 및 벤처투자": "Technology Entrepreneurship & Venture Investment",
+    "디지털 전환": "Digital Transformation",
+    "조직 역량 및 혁신 문화": "Organizational Capability & Innovation Culture"
+  },
+  "cats": {
+    "기계, 중공업, 건설": "Machinery, Heavy Industry & Construction",
+    "전기, 전자, 반도체": "Electrical, Electronics & Semiconductors",
+    "자동차, 모빌리티": "Automotive & Mobility",
+    "화학, 소재, 에너지": "Chemicals, Materials & Energy",
+    "바이오, 헬스케어": "Bio & Healthcare",
+    "항공, 우주, 방산": "Aerospace & Defense",
+    "서비스, 플랫폼": "Services & Platforms",
+    "소비재, 유통": "Consumer Goods & Retail",
+    "공공, 연구, 교육": "Public, Research & Education"
+  },
+  "advisors": {
+    "김병필": "Byoungpil Kim",
+    "김갑수": "Gapsu Kim",
+    "윤정호": "Jungho Yoon",
+    "윤태성": "Taesung Yoon",
+    "김영태": "Youngtae Kim",
+    "김의석": "Euiseok Kim",
+    "김원준": "Wonjoon Kim",
+    "조항정": "Hangjung Zo",
+    "이덕희": "Duk Hee Lee",
+    "권영선": "Youngsun Kwon",
+    "엄지용": "Jiyong Eom"
+  },
+  "cases": {
+    "200104": {
+      "title": "DJI's Innovation Strategy through Patent Analysis",
+      "author": "Hyeju Kim",
+      "firm": "DJI",
+      "field": "Drones & aviation"
+    },
+    "210107": {
+      "title": "Product Architecture and Technology Development Strategy in the Shipbuilding Industry",
+      "author": "Yongjin Seo",
+      "firm": "Daewoo Shipbuilding & Marine Engineering",
+      "field": "Shipbuilding"
+    },
+    "210203": {
+      "title": "Innovation in the Webtoon Business: Platform Business and the Flywheel Effect",
+      "author": "Bobae Kang",
+      "firm": "Naver & Kakao",
+      "field": "Entertainment"
+    },
+    "210204": {
+      "title": "Innovation Strategy for Korean Smart Factories: The Case of POSCO",
+      "author": "Minjong Kim",
+      "firm": "POSCO",
+      "field": "Steel"
+    },
+    "220201": {
+      "title": "Innovation in a Super-Gazelle Firm Seen through Employment and Growth: The Case of Fresheasy",
+      "author": "Dayoung Kong",
+      "firm": "Fresheasy",
+      "field": "Food"
+    },
+    "220210": {
+      "title": "Innovation in HD Hyundai Heavy Industries' Engine & Machinery Business: A Latecomer's Competitive Strategy",
+      "author": "Hyunho Shin",
+      "firm": "HD Hyundai Heavy Industries",
+      "field": "Heavy industry"
+    },
+    "230101": {
+      "title": "Innovation at Kolmar BNH, Korea's First Research Institute Company: Entry and Expansion Strategy",
+      "author": "Taemin Yeom",
+      "firm": "Kolmar BNH",
+      "field": "Bio"
+    },
+    "230104": {
+      "title": "Success Factors in the Global Commercialization of a Korean Pharmaceutical Firm: The Case of Daewoong's Nabota",
+      "author": "Hyeonggi Choi",
+      "firm": "Daewoong Pharmaceutical",
+      "field": "Pharmaceuticals"
+    },
+    "230107": {
+      "title": "Innovation Attributes and Technological Knowledge Influence by Firm Type in the Semiconductor Equipment Industry",
+      "author": "Yeonwook Keum",
+      "firm": "Six semiconductor front-end equipment firms",
+      "field": ""
+    },
+    "230108": {
+      "title": "University Technology Holding Companies for Technology Commercialization: Jointly Established Korean Companies and Overseas Cases",
+      "author": "Kiyoon Kim",
+      "firm": "University technology holding companies",
+      "field": ""
+    },
+    "230113": {
+      "title": "How LG Energy Solution, a Latecomer in Lithium-Ion Batteries, Caught Up in the EV Battery Market",
+      "author": "Seungjun Min",
+      "firm": "LG Energy Solution",
+      "field": "Batteries"
+    },
+    "230205": {
+      "title": "Innovation Strategy for the Electrification Transition in the Automotive Industry: The Case of Hyundai Motor",
+      "author": "Kiho Jin",
+      "firm": "Hyundai Motor",
+      "field": "Automotive"
+    },
+    "230211": {
+      "title": "Innovation in Korea's Early-Morning Fresh Food Delivery Market: The Case of Oasis",
+      "author": "Yunju Lee",
+      "firm": "Oasis",
+      "field": "Retail"
+    },
+    "230214": {
+      "title": "Platform Innovation in a Financial Super-App: The Case of Toss Securities",
+      "author": "Youngjun Jang",
+      "firm": "Toss",
+      "field": "Finance"
+    },
+    "230216": {
+      "title": "Innovation Strategy of a Bio-Platform Company: The Case of Halozyme",
+      "author": "Seora Jeong",
+      "firm": "Halozyme",
+      "field": ""
+    },
+    "240102": {
+      "title": "Corporate Innovation through Technology Convergence and Crossing the Chasm: The Case of Bodyfriend",
+      "author": "Okyung Kwon",
+      "firm": "Bodyfriend",
+      "field": "Massage chairs"
+    },
+    "240105": {
+      "title": "From Technological Catch-up to Disruptive Innovation: A Case Study on the Success of T-50 Development",
+      "author": "Jaehyung Park",
+      "firm": "Korea Aerospace Industries (KAI)",
+      "field": "Aerospace"
+    },
+    "240204": {
+      "title": "Drivers of Innovative Growth in an Agricultural Machinery Firm: The Case of Daedong's Tractors",
+      "author": "Aryeong Park",
+      "firm": "Daedong",
+      "field": "Machinery"
+    },
+    "240205": {
+      "title": "A Successful Digital Transformation Strategy in Manufacturing: The Case of HD Hyundai Infracore",
+      "author": "Minho Seo",
+      "firm": "HD Hyundai Infracore",
+      "field": "Machinery"
+    },
+    "240207": {
+      "title": "Attacking a Market Niche with Deep-Tech Innovation: The Case of Park Systems",
+      "author": "Sunju Lee",
+      "firm": "Park Systems",
+      "field": ""
+    },
+    "240209": {
+      "title": "Success Factors of Delightroom, Developer of the World's No.1 Alarm App 'Alarmy'",
+      "author": "Dongin Cho",
+      "firm": "Delightroom",
+      "field": "App development"
+    },
+    "240210": {
+      "title": "Innovation Strategy for a Tobacco Manufacturer's Sustained Growth in a Smoke-Free World: The Case of KT&G",
+      "author": "Sunjin Hwang",
+      "firm": "KT&G",
+      "field": "Tobacco"
+    },
+    "250108": {
+      "title": "Sustainable Competitive Advantage Built on an Appropriability Regime: How TE Connectivity Built Leadership in the Global Commodity Component Market",
+      "author": "Jinhwan Yeo",
+      "firm": "TE Connectivity",
+      "field": "Components"
+    },
+    "250110": {
+      "title": "A Latecomer SME's Entry into a Global Oligopoly: New-Market Disruptive Innovation at i-SENS",
+      "author": "Jooyoung Lee",
+      "firm": "i-SENS",
+      "field": "Healthcare"
+    },
+    "250205": {
+      "title": "Developing Korea's First Indigenous Fighter (KF-21) through Absorptive Capacity: From KF-16 Licensed Production to T-50 Co-development",
+      "author": "Dawoon Kim",
+      "firm": "Korea Aerospace Industries (KAI)",
+      "field": "Defense"
+    },
+    "250210": {
+      "title": "Post-Catch-up Growth in a Bio Deep-Tech Latecomer: DewCell's Artificial Platelet Process Innovation and Ecosystem Leadership",
+      "author": "Hwanki Yoo",
+      "firm": "DewCell",
+      "field": "Bio"
+    },
+    "250215": {
+      "title": "Success Factors in LIG Nex1's Precision-Guided Munitions Technology Innovation",
+      "author": "Jinyong Lee",
+      "firm": "LIG Nex1",
+      "field": "Defense"
+    },
+    "260105": {
+      "title": "Breaking the Quality Ceiling in Ambient HMR: CJ CheilJedang's Bibigo Soups and Stews",
+      "author": "Jin Kim",
+      "firm": "CJ CheilJedang",
+      "field": "Food"
+    },
+    "260108": {
+      "title": "Becoming a Rule Maker through Geometry Innovation and Public Procurement Ecosystem Leadership: The Case of Hwayoung, a Latecomer SME in Building Materials",
+      "author": "Jooyeon Park",
+      "firm": "Hwayoung",
+      "field": "Materials, parts & equipment"
+    },
+    "260111": {
+      "title": "How Ecosystem-Based Platform Envelopment Reshaped Competition: The Case of Coupang Eats",
+      "author": "Kyunggeun Jeon",
+      "firm": "Coupang Eats",
+      "field": "IT"
+    },
+    "260113": {
+      "title": "Structural Transformation and Disruptive Innovation in the K-Beauty Industry: The Growth Strategy of APR",
+      "author": "Hojin Choi",
+      "firm": "APR",
+      "field": "Cosmetics"
+    }
+  }
+}
