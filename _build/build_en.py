@@ -80,7 +80,7 @@ DISCLAIMER = '''<div class="ai-note">
   <b>Machine-translated page.</b> This English edition was produced automatically by AI from the
   Korean original. It has not been verified by the authors, and accuracy of terminology, figures,
   names and nuance is not guaranteed. The Korean edition is the authoritative version — please
-  consult it for any citation or decision. Personal and organisation names are romanised
+  consult it for any citation or decision. Personal and organization names are romanized
   automatically and may differ from the form the individual uses.
 </div>'''
 
@@ -93,7 +93,7 @@ def footer():
       <div class="f-logo">ITM KAIST <span class="f-sub">TECHNOLOGY &amp; INNOVATION MANAGEMENT</span></div>
       <p>KAIST Graduate School of Innovation &amp; Technology Management<br>
       291 Daehak-ro, Yuseong-gu, Daejeon, Republic of Korea<br>
-      These case studies were selected from the master's thesis case studies of the KAIST ITM programme.</p>
+      These case studies were selected from the master's thesis case studies of the KAIST ITM program.</p>
       <p class="copyright">Copyright in each case study belongs to its original author.
       Reproduction, redistribution or derivative use without prior written permission is prohibited.
       To cite or reuse this material, please obtain prior permission from the original author and
@@ -174,7 +174,7 @@ def build_index():
   </svg>
   <div class="wrap">
     <h1>Learning at the intersection of technology and management<br><span class="en">ITM Case Study Library</span></h1>
-    <p class="sub">Selected corporate innovation case studies from the master's programme of the KAIST Graduate School of Innovation &amp; Technology Management (ITM).</p>
+    <p class="sub">Selected corporate innovation case studies from the master's program of the KAIST Graduate School of Innovation &amp; Technology Management (ITM).</p>
   </div>
 </section>
 <section class="grid-area">
