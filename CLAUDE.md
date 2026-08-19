@@ -49,9 +49,16 @@
    AI 느낌의 재창작 소제목 금지. 상세 스타일은 `_build/WRITING_GUIDE.md` 참조.
 10. **원문 전체 보기 버튼은 같은 창으로 연다.** (규칙 3과 동일. `target="_blank"` 없이 생성 —
     build.py에 반영됨. PDF 내려받기 버튼은 다운로드이므로 `target="_blank"` 유지.)
-11. **기술경영 쟁점은 사례당 2~5개 복수 지정한다.** `assets/meta.json`의 `issues` 배열이 원본이며
+11. **기술경영 쟁점은 사례당 1~2개 지정한다.** `assets/meta.json`의 `issues` 배열이 원본이며
     첫 항목이 대표 쟁점이다(`issue` 필드에 자동 복사). 카드 칩·사이드바 필터·사례 페이지 하이라이트는
-    모든 쟁점에 반응한다. 재분류 시 원본 엑셀(Case list_ITM_선정.xlsx)의 키워드 컬럼을 참고한다.
+    모든 쟁점에 반응한다.
+    - **분류 체계는 2026-08-19 조항정 교수의 `산업_기술경영_카테고리.xlsx`를 따라 전면 교체됐다**
+      (이전의 `제조·중공업`/`파괴적 혁신·신시장` 계열 명칭은 폐기). 엑셀에 있는 8건(210204·230205·
+      230211·230214·240205·240207·260108·260111)의 값은 **교수 지정이므로 임의로 바꾸지 않는다.**
+    - 나머지 23건은 같은 체계로 매핑하되, 엑셀에 없던 산업 4종(항공, 우주, 방산 / 바이오, 헬스케어 /
+      화학, 소재, 에너지 / 공공, 연구, 교육)과 기술경영 4종(기술 추격 및 흡수 역량 / R&D 및 지식재산
+      전략 / 파괴적 혁신 및 신시장 창출 / 시장 확산 및 사업화)을 같은 작명 방식으로 신설해 배정했다.
+      다른 검수자의 엑셀이 도착하면 그 지정이 이 매핑보다 우선한다.
 12. **카드와 사례 페이지에 `[No. 사례ID]`를 표시한다.** 선정 엑셀 목록과 매칭하기 위한 것이므로 제거하지 않는다.
 13. **검색엔진 인덱싱 금지 상태를 유지한다.** 대외 공개 전까지 루트 `robots.txt`(Disallow: /)와
     모든 페이지의 `<meta name="robots" content="noindex, nofollow">`를 제거하지 않는다.
@@ -83,9 +90,9 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 |---|---|---|
 | `id` | 사례 ID (YYSSNN) | 파일명 전체와 연동 |
 | `title`, `author`, `advisor` | 제목·연구자·지도교수 | advisor 없으면 빈 문자열("-"로 표시됨) |
-| `issues` | 기술경영 쟁점 목록 (9종 중 2~5개) | build.py 상단 `ISSUES` 목록과 일치해야 함. 첫 항목 = 대표 쟁점 |
+| `issues` | 기술경영 분야 목록 (9종 중 1~2개) | build.py 상단 `ISSUES` 목록과 일치해야 함. 첫 항목 = 대표 쟁점 |
 | `issue` | 대표 쟁점 (`issues[0]`) | 브레드크럼 표시용. `issues` 변경 시 함께 갱신 |
-| `category` | 산업 분류 (8종) | build.py 상단 `CATS` 목록과 일치해야 함 |
+| `category` | 산업 분야 (8종) | build.py 상단 `CATS` 목록과 일치해야 함 |
 | `firm`, `firmInfo`, `field` | 대상 기업 정보 | |
 | `year`, `semester`, `pub` | 발표 시기 | |
 | `excellent`, `qual`, `themes` | 내부 참고용 | **화면 노출 금지** |
@@ -115,7 +122,7 @@ _build/extract/{id}.txt (+ imgpool, 저장소 외부) ─→ _build/gen_fulltext
 1. 원문 보고서에서 텍스트 추출(`pdftotext -layout`) → `_build/extract/{id}.txt`.
 2. `_build/WRITING_GUIDE.md`와 기존 기사 2~3편을 정독한 후 §2 규칙에 맞춰
    `_build/cases_src/{id}_body.html` 작성. 그림은 원문에서 추출해 `assets/img/{id}/`에 저장.
-3. `assets/meta.json`에 항목 추가 (issue/category는 기존 9/8종 중에서 선택).
+3. `assets/meta.json`에 항목 추가 (issues는 기술경영 9종 중 1~2개, category는 산업 8종 중 1개).
 4. 원문 전체 페이지 생성(§6 제약 확인) 또는 기존 사례의 `fulltext/{id}/index.html`을 복제해
    같은 마크업 구조(`.ft-body`, `.ftcap`, `.ftsrc`, `.ftfig`)로 수작업 작성.
 5. `python3 _build/build.py` → 검증 → 커밋. (첫 빌드가 `cases_src` 시드를 `cases/{id}.html`에

@@ -14,9 +14,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 W = ROOT
 meta = json.load(open(f'{W}/assets/meta.json', encoding='utf-8'))
 by_id = {m['id']: m for m in meta}
-ISSUES = ['파괴적 혁신·신시장', '기술추격·흡수역량', '플랫폼·생태계', '강소기업·딥테크 성장',
-          '디지털 전환·공정혁신', 'R&D·특허 전략', '제품혁신·아키텍처', '시장확산·캐즘 극복', '공공·기술사업화']
-CATS = ['IT·플랫폼', '제조·중공업', '기계·장비·부품', '항공·방산', '바이오·헬스케어', '배터리·소재', '소비재·유통', '공공·기술사업화']
+ISSUES = ['제품 공정 및 아키텍처', '개방형 혁신 및 생태계', 'R&D 및 지식재산 전략', '기술 추격 및 흡수 역량',
+          '파괴적 혁신 및 신시장 창출', '시장 확산 및 사업화', '기술창업 및 벤처투자', '디지털 전환',
+          '조직 역량 및 혁신 문화']
+CATS = ['기계, 중공업, 건설', '전기, 전자, 반도체', '자동차, 모빌리티', '화학, 소재, 에너지',
+        '바이오, 헬스케어', '항공, 우주, 방산', '서비스, 소비재', '공공, 연구, 교육']
 
 # Markers that delimit the editable body region inside each generated case page.
 BODY_START = '<!-- BODY:START -->'
